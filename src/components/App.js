@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 import NavBar from "./NavBar";
@@ -8,8 +8,20 @@ import Profile from "./Profile";
 import Search from "./Search";
 
 function App() {
+  ////  STATES
+  const [login, setLogin] = useState([])
+  const [allExhibittions, setAllExhibitions] = useState([])
 
-  const [login, setLogin] = useState(null)
+  ////  USE EFFECTS
+  useEffect(() => {   ///// Initial Fetch for Exhibitions Index
+    fetch("http://localhost:3000/exhibitions")
+    .then((r) => r.json())
+    .then((data) => {
+        console.log(data)
+    })
+  }, [])
+
+
 
 
   return (
@@ -22,7 +34,8 @@ function App() {
       <div className="app-body">
         <Switch>
           <Route exact path="/">
-            <Home />
+            <Home 
+              login={login}/>
           </Route>
           <Route exact path="/login">
             <Login 
