@@ -1,0 +1,29 @@
+.login-container {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+input {
+    width: 200px;
+}
+button {
+
+}
+
+h1 {
+    margin: 20px;
+}
+h2 {
+    margin: 0px;
+}
+h3 {
+    margin: 0px;
+}
+.login-label {
+    margin: 0px;
+}
+
+.login-input {
+    margin: 0px;
+}
