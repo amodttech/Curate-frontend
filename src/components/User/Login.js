@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import { useHistory } from 'react-router-dom';
-import '../stylesheets/login.css'
+import '../../stylesheets/login.css'
 
 function Login({setLogin, login}) {
   let history = useHistory()
