@@ -2,7 +2,11 @@ import React from 'react';
 import { useHistory } from "react-router-dom";
 import '../stylesheets/nav-bar.css'
 
-function NavBar({login, setLogin}) {
+// import { useSelector } from 'react-redux'
+
+
+function NavBar() {
+
   const history = useHistory();
   // NAVIGATION HANDLERS
   function handleHome(){
@@ -11,14 +15,14 @@ function NavBar({login, setLogin}) {
   function handleSearch(){
     history.push("/search")
   }
-  function handleExhibition(){
+  // function handleExhibition(){
 
-  }
+  // }
   function handleLogin(){
     history.push("/login")
   }
   function handleLogout(){
-    setLogin(null)
+
   }
 
 
@@ -30,9 +34,8 @@ function NavBar({login, setLogin}) {
       <div className="nav-button" onClick={handleSearch}>SEARCH</div>
       <div className="nav-button">EXHIBITION</div>
 
-      {login ? 
         <div className="nav-button" onClick={handleLogout}>LOGOUT</div> 
-        : <div className="nav-button" onClick={handleLogin}>LOGIN</div>}
+        <div className="nav-button" onClick={handleLogin}>LOGIN</div>
       
 
 

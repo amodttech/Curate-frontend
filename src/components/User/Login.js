@@ -2,15 +2,23 @@ import React, {useState} from 'react';
 import { useHistory } from 'react-router-dom';
 import '../../stylesheets/login.css'
 
-function Login({setLogin, login}) {
+import {useDispatch} from 'react-redux'
+import { setId, setDisplayName, setBio, addExhibitions, setUsername } from '../../reducers/userSlice'
+
+function Login() {
   let history = useHistory()
 
-  const [username, setUsername] = useState(null)
+  // REDUX
+  const dispatch = useDispatch()
+  //
+
+
+  const [formUsername, setFormUsername] = useState(null)
   const [password, setPassword] = useState(null)
 
   function handleSubmit(e) {
     e.preventDefault()
-    const formData = { username, password }
+    const formData = { formUsername, password }
     fetch("http://localhost:3000/login", {
         method: "POST",
         headers: {
@@ -19,8 +27,13 @@ function Login({setLogin, login}) {
         body: JSON.stringify(formData),
     })
     .then((r) => r.json())
-    .then((data) => {
-        setLogin(data)        
+    .then((userObj) => {
+        console.log(userObj)
+        dispatch(setId(userObj.id))
+        dispatch(setDisplayName(userObj.display_name))
+        dispatch(setBio(userObj.bio))
+        dispatch(addExhibitions(userObj.exhibitions))
+        dispatch(setUsername(userObj.username))
         history.push("/")
     })
 
@@ -28,17 +41,17 @@ function Login({setLogin, login}) {
   }
 
 
-  console.log(login ? login.display_name : "no login")
+
 
   return (
     <div className="login-container">
       <h1>LOGIN</h1>
-      <div className="login-form" onSubmit={handleSubmit}>
+      <form className="login-form" onSubmit={handleSubmit}>
         <div className="login-label">
           <h3>USERNAME</h3>
         </div>
         <div className="login-input">
-          <input type="text" id="username" value={username} onChange={(e) => setUsername(e.target.value)} />
+          <input type="text" id="username" value={formUsername} onChange={(e) => setFormUsername(e.target.value)} />
         </div>
 
         <div className="login-label">
@@ -48,9 +61,9 @@ function Login({setLogin, login}) {
           <input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} />
         </div>
         <div className="login-submit">
-          <button onClick={handleSubmit}>SUBMIT</button>
+          <button type="submit">SUBMIT</button>
         </div>
-      </div>
+      </form>
     </div>
   );
 }

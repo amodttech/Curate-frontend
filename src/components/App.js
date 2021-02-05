@@ -1,8 +1,8 @@
-import React, {useState, useEffect} from 'react';
+import React, {useEffect} from 'react';
 import { Route, Switch } from 'react-router-dom';
 // REDUX IMPORTS
 import {useDispatch, useSelector} from 'react-redux'
-import {increment, decrement} from '../actions'
+import {increment, decrement, firstExhibitions} from '../actions'
 // COMPONENT IMPORTS
 import NavBar from "./NavBar";
 import Home from "./Home";
@@ -13,10 +13,6 @@ import Search from "./Search";
 
 
 function App() {
-  ////  STATES
-  const [login, setLogin] = useState([])
-  const [allExhibittions, setAllExhibitions] = useState([])
-
 
   // TEST REDUX
   const counter = useSelector(state => state.counter)
@@ -28,7 +24,8 @@ function App() {
     fetch("http://localhost:3000/exhibitions")
     .then((r) => r.json())
     .then((data) => {
-        console.log(data)
+      console.log(data)
+      dispatch(firstExhibitions(data))
     })
   }, [])
 
@@ -38,9 +35,7 @@ function App() {
   return (
     <div className="tip-top-div">
       <div className="app-nav">
-        <NavBar 
-          login={login} 
-          setLogin={setLogin}/>
+        <NavBar />
       </div>
       <div className="app-body">
         Counter {counter}
@@ -50,13 +45,10 @@ function App() {
 
         <Switch>
           <Route exact path="/">
-            <Home 
-              login={login}/>
+            <Home />
           </Route>
           <Route exact path="/login">
-            <Login 
-              login={login} 
-              setLogin={setLogin}/>
+            <Login />
           </Route>
           <Route exact path="/profile">
             <Profile  />
