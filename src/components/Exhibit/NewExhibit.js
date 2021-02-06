@@ -29,7 +29,7 @@ function NewExhibit() {
       description: showDescription,
       theme: displayTheme
     }
-    fetch("http://localhost:3000/expeditions/", {
+    fetch("http://localhost:3000/exhibitions/", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -37,6 +37,10 @@ function NewExhibit() {
         body: JSON.stringify(formData),
     })
     .then((r) => r.json())
+    .then((data) => {
+      console.log(data)
+      // history.push("/profile")
+    })
   }
 
 
@@ -46,7 +50,7 @@ function NewExhibit() {
   return (
     <div className="exhibit-new-container">
       <h1>New Exhibition</h1>
-      <form className="exhibit-new-form" className={handleSubmit}>
+      <form className="exhibit-new-form" onSubmit={handleSubmit}>
         <div className="exhibit-new-label">
           <h3>What's the title of your show?</h3>
         </div>
