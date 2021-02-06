@@ -1,10 +1,16 @@
-.login-container {
+.exhibit-new-container {
     display: flex;
     flex-direction: column;
     text-align: center;
 }
 
 input {
+    width: 200px;
+}
+select {
+    width: 200px;
+}
+option {
     width: 200px;
 }
 h1 {
@@ -16,16 +22,16 @@ h2 {
 h3 {
     margin: 0px;
 }
-.login-form{
+.exhibit-new-form {
 
 }
-.login-label {
+.exhibit-new-label {
     margin: 0px;
 }
 
-.login-input {
+.exhibit-new-input {
     margin: 0px;
 }
-.login-submit {
-    
+.exhibit-new-dropdown {
+
 }

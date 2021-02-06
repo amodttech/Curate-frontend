@@ -17,9 +17,21 @@ export const decrement = () => {
 //  REAL ACTIONS
 
 
-export const firstExhibitions = (exhibitObj) => {
+export const setExhibitions = (exhibitObj) => {  ///  Gets all expeditions
     return {
-        type: 'FIRSTEXHIBITIONS',
+        type: 'SETEXHIBITIONS',
         payload: exhibitObj
+    }
+}
+
+export const isLoggedIn = () => {  ///  True if user is logged in
+    return {
+        type: 'LOGGEDIN'
+    }
+}
+
+export const isLoggedOut = () => {  ///  True if user is logged in
+    return {
+        type: 'LOGGEDOUT'
     }
 }

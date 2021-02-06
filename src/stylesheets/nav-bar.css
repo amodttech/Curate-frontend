@@ -2,6 +2,7 @@
     display: inline;
     height: 80px;
     width: 600px;
+    position: relative;
 }
 
 .nav-title{
@@ -16,7 +17,7 @@
 .nav-button{
     display: inline;
     padding: 5px;
-    width: 80px;
+    width: fit-content;
     height: 30px;
     line-height: 30px;
     background: linear-gradient(180deg, rgba(233,233,233,1) 61%, rgba(152,152,152,1) 94%);
@@ -31,5 +32,19 @@
 .nav-title:hover{
     color: lightblue;
     cursor: pointer;
+}
+.nav-exhibit-menu{
+    float: left;
+    position: absolute;
+    left: 235px;
+    top: 55px;
+    background-color: red;
+
+    width: 500px;
+    padding:5px;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    border-top-right-radius: 8px;
+
 }
 

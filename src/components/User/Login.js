@@ -1,21 +1,22 @@
 import React, {useState} from 'react';
 import { useHistory } from 'react-router-dom';
 import '../../stylesheets/login.css'
+/// COMPONENTS
 
+/// REDUX IMPORTS
 import {useDispatch} from 'react-redux'
 import { setId, setDisplayName, setBio, addExhibitions, setUsername } from '../../reducers/userSlice'
+import {isLoggedIn, isLoggedOut} from '../../actions'
 
 function Login() {
   let history = useHistory()
-
   // REDUX
   const dispatch = useDispatch()
-  //
-
-
+  //// ------------
+  // USESTATES
   const [formUsername, setFormUsername] = useState(null)
   const [password, setPassword] = useState(null)
-
+  // HANDLERS
   function handleSubmit(e) {
     e.preventDefault()
     const formData = { formUsername, password }
@@ -29,6 +30,7 @@ function Login() {
     .then((r) => r.json())
     .then((userObj) => {
         console.log(userObj)
+        dispatch(isLoggedIn())
         dispatch(setId(userObj.id))
         dispatch(setDisplayName(userObj.display_name))
         dispatch(setBio(userObj.bio))
@@ -36,12 +38,8 @@ function Login() {
         dispatch(setUsername(userObj.username))
         history.push("/")
     })
-
-    
   }
-
-
-
+  //// ------------
 
   return (
     <div className="login-container">

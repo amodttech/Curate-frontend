@@ -1,17 +1,15 @@
 import counterReducer from './counter'
-import loggedReducer from './isLogged'
 import {combineReducers} from 'redux'
-import loginReducer from './login'
 import userReducer from "./userSlice";
-import firstExhibitionsReducer from './firstExhibitions';
+import setExhibitionsReducer from './setExhibitions';
+import isLoggedInReducer from './isLoggedIn'
 
 
 const allReducers = combineReducers({
     counter: counterReducer, 
-    isLogged: loggedReducer, 
-    login: loginReducer,
     user: userReducer,
-    allExhibitions: firstExhibitionsReducer
+    allExhibitions: setExhibitionsReducer,
+    loggedIn: isLoggedInReducer
 
 })
 
