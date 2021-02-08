@@ -11,7 +11,7 @@ function Home() {
   // REDUX
   const dispatch = useDispatch()
   const user = useSelector((state) => state.user)
-  const exhibitionsListFromStore = useSelector((state) => state.allExhibitions)
+  const exhibitionsListFromStore = useSelector((state) => state.exhibitions)
   //// ------------
   // USESTATES
   const [exhibitionsList, setExhibitionsList] = useState([])

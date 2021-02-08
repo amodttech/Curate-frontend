@@ -23,7 +23,7 @@ function SaveObject({artObjectSaveData}) {
     postNewArtObject(artObjectSaveData)
   }
 
-  // HELPERS
+  // HELPERS  - Posts object, if MET_ID already exists in DB, return the existing object
   function postNewArtObject(artObjectSaveData){
     fetch("http://localhost:3000/art_objects/", {
         method: "POST",

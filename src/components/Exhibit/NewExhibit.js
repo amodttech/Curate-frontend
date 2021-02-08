@@ -5,6 +5,7 @@ import '../../stylesheets/exhibit-new.css'
 
 /// REDUX IMPORTS
 import { useSelector, useDispatch } from 'react-redux'
+import {addToExhibitions, setExhibitions} from '../../actions'
 
 
 function NewExhibit() {
@@ -39,6 +40,7 @@ function NewExhibit() {
     .then((r) => r.json())
     .then((data) => {
       console.log(data)
+      dispatch(addToExhibitions(data))
       // history.push("/profile")
     })
   }

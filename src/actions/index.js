@@ -1,37 +1,50 @@
 //  TESTER ACTIONS
-
+// counter.js
 export const increment = nr => {
     return {
         type: 'INCREMENT',
         payload: nr
     }
 }
-
 export const decrement = () => {
     return {
         type: 'DECREMENT'
     }
 }
 
-
 //  REAL ACTIONS
-
-
-export const setExhibitions = (exhibitObj) => {  ///  Gets all expeditions
+// expeditions.js
+export const setExhibitions = (exhibitObj) => {  
     return {
         type: 'SETEXHIBITIONS',
         payload: exhibitObj
     }
 }
+export const addToExhibitions = (exhibitionObj) => { 
+    return {
+        type: 'ADDTOEXHIBITIONS',
+        payload: exhibitionObj
+    }
+}
 
-export const isLoggedIn = () => {  ///  True if user is logged in
+// isLoggedIn.js
+export const isLoggedIn = () => {  
     return {
         type: 'LOGGEDIN'
     }
 }
-
-export const isLoggedOut = () => {  ///  True if user is logged in
+export const isLoggedOut = () => {  
     return {
         type: 'LOGGEDOUT'
     }
 }
+
+// currentExhibition.js
+export const currentExhibition = (exhibitionObj) => { 
+    return {
+        type: 'CURRENTEXHIBITION',
+        payload: exhibitionObj
+    }
+}
+
+
