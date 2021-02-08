@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import { useHistory } from "react-router-dom";
 import '../stylesheets/nav-bar.css'
 /// COMPONENTS
-
+import ExhibitMenu from './Exhibit/ExhibitMenu'
 /// REDUX IMPORTS
 import { useSelector, useDispatch } from 'react-redux'
 import {isLoggedOut} from '../actions'
@@ -51,15 +51,15 @@ function NavBar() {
       <div className="nav-container">
         <div className="nav-title" onClick={handleHome}>CURATE</div>
         <div className="nav-button" onClick={handleSearch}>SEARCH</div>
-        <div className="nav-button" onClick={handleExhibition}>EXHIBITION</div>
         {loggedIn  ? <>
+          <div className="nav-button" onClick={handleExhibition}>YOUR EXHIBITIONS</div>
           <div className="nav-button" onClick={handleNewExhibition}>NEW EXHIBITION</div>
           <div className="nav-button" onClick={handleLogout}>LOGOUT</div>
           </> :
           <div className="nav-button" onClick={handleLogin}>LOGIN</div>}
       </div>
       {exhibitToggle ? <div className="nav-exhibit-menu">
-          floater
+          <ExhibitMenu />
       </div> : null}
     </>
   );

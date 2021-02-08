@@ -16,11 +16,21 @@ function SaveObject({artObjectSaveData}) {
   const [showName, setShowName] = useState("")
   const [showDescription, setShowDescription] = useState("")
   const [displayTheme, setDisplayTheme] = useState("")
+  const [artId, setArtId] = useState(null)
+  //// ------------
+  // Object Creator
+  const exhibitionObjectSaveData = {
+    art_object_id: artId,
+    exhibition_id: currentExhibition.id,
+    order_number: null
+  }
   //// ------------
   // EVENT HANDLERS
-  function handleSaveClick(){
+  async function handleSaveClick(){
     console.log('clicked save')
-    postNewArtObject(artObjectSaveData)
+    const artObjectResponse = await postNewArtObject(artObjectSaveData)
+
+    // const exhibitionObjectResponse = await postNewExhibitionObject(artObjectResponse)
   }
 
   // HELPERS  - Posts object, if MET_ID already exists in DB, return the existing object
@@ -34,10 +44,24 @@ function SaveObject({artObjectSaveData}) {
     })
     .then((r) => r.json())
     .then((data) => {
-      console.log(data)
+      console.log('returned art object: ' + data)
       // history.push("/profile")
     })
   }
+  // function postNewExhibitionObject(exhibitionObjectSaveData){
+  //   fetch("http://localhost:3000/exhibition_objects/", {
+  //       method: "POST",
+  //       headers: {
+  //           "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify(exhibitionObjectSaveData),
+  //   })
+  //   .then((r) => r.json())
+  //   .then((data) => {
+  //     console.log('created exhibition object: ' + data)
+  //     // history.push("/profile")
+  //   })
+  // }
 
 
   return (

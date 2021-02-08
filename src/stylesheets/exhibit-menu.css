@@ -1,0 +1,13 @@
+.exhibit-menu-container {
+ padding: 2px;
+}
+.exhibit-menu-ul {
+    list-style-type: none;
+}
+.exhibit-menu-li {
+
+}
+.exhibit-menu-description {
+    font-size: small;
+    opacity: 60%;
+}

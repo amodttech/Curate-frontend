@@ -5,9 +5,11 @@ const initialState = {
 const exhibitionsReducer = (state = initialState, action) => {
     switch(action.type){
         case 'SETEXHIBITIONS':
-            return state.exhibitions = action.payload
+            return {...state, exhibitions: action.payload} 
         case 'ADDTOEXHIBITIONS':
-            return state.exhibitions.push(action.payload)
+            return {...state,
+                exhibitions: [...state.exhibitions, action.payload]
+            }
         default:
             return state
     }

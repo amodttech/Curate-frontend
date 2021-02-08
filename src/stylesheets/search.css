@@ -6,6 +6,10 @@
 input {
     width: 200px;
 }
+.search-saerching {
+    text-align: center;
+    opacity: 50%;
+}
 .search-input-div {
     float: left;
     display: flex;

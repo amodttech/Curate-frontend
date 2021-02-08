@@ -6,12 +6,13 @@ import SaveObject from './SaveObject'
 import { useSelector, useDispatch } from 'react-redux'
 
 function ObjectCard({artObject}) {
-  console.log(artObject)
   const {objectID, objectURL, title, primaryImage, primaryImageSmall, artistDisplayName, objectDate, artistNationality} = artObject
-  
+  // REDUX
   const loggedIn = useSelector((state) => state.loggedIn)
   const user = useSelector((state) => state.user)
-
+  const currentExhibition = useSelector((state) => state.currentExhibition)
+  //// ------------
+  // Object Creator
   const artObjectSaveData = {
     met_id: objectID,
     title: title,
@@ -21,6 +22,7 @@ function ObjectCard({artObject}) {
     image: primaryImage,
     description: ""
   }
+  //// ------------
 
   return (
     <div className="object-card-container" style={{backgroundImage: `url(${primaryImageSmall})`}}>

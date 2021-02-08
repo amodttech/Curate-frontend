@@ -1,0 +1,29 @@
+.exhibit-container {
+    
+}
+.exhibit-controller {
+    height: 50px;
+}
+.exhibit-controller-button {
+    display: inline;
+    padding: 5px;
+    width: fit-content;
+    height: 30px;
+    line-height: 30px;
+    background: linear-gradient(180deg, rgba(233,233,233,1) 61%, rgba(152,152,152,1) 94%);
+    font-size: medium;
+}
+.exhibit-controller-button:hover{
+    background: linear-gradient(180deg, rgba(233,233,233,1) 61%, rgba(152,152,152,1) 80%);
+    cursor: pointer;
+}
+.exhibit-controller-button-current {
+    display: inline;
+    padding: 5px;
+    width: fit-content;
+    height: 30px;
+    line-height: 30px;
+    background: linear-gradient(180deg, rgba(233,233,233,1) 61%, rgba(152,152,152,1) 94%);
+    font-size: medium;
+    color: yellow;
+}

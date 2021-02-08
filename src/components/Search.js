@@ -7,10 +7,12 @@ function Search() {
   // USESTATES
   const [query, setQuery] = useState("")
   const [artObjects, setArtObjects] = useState([])
+  const [searching, setSearching] = useState(false)
 
   // HANDLERS
   function handleSubmit(event){
     event.preventDefault()
+    setSearching(true)
     fetchIds()
   }
 
@@ -25,8 +27,11 @@ function Search() {
         return await response.json()
     }))
       setArtObjects(artObjs)
+      setSearching(false)
+
     } catch {
       alert("not found");
+      setSearching(false)
     }
   }
   // Render the objects
@@ -46,10 +51,7 @@ function Search() {
           <input type="text" value={query} onChange={(e) => setQuery(e.target.value)}></input>
           <button type="submit">SEARCH</button>
         </form>
-
-
-
-
+        {searching ? <p className="search-saerching">Searching...</p> : null}
       </div>
       <div className="search-return-div">
         <ul className="search-return-list">
