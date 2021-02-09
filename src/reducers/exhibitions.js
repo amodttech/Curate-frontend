@@ -1,15 +1,10 @@
-const initialState = {
-    exhibitions: []
-}
 
-const exhibitionsReducer = (state = initialState, action) => {
+const exhibitionsReducer = (state = {}, action) => {
     switch(action.type){
         case 'SETEXHIBITIONS':
-            return {...state, exhibitions: action.payload} 
+            return {...state, ...action.exhibition} 
         case 'ADDTOEXHIBITIONS':
-            return {...state,
-                exhibitions: [...state.exhibitions, action.payload]
-            }
+            return {...state, [(action.exhibition.id)-1]: action.exhibition}
         default:
             return state
     }

@@ -17,13 +17,13 @@ export const decrement = () => {
 export const setExhibitions = (exhibitObj) => {  
     return {
         type: 'SETEXHIBITIONS',
-        payload: exhibitObj
+        exhibition: exhibitObj
     }
 }
 export const addToExhibitions = (exhibitionObj) => { 
     return {
         type: 'ADDTOEXHIBITIONS',
-        payload: exhibitionObj
+        exhibition: exhibitionObj
     }
 }
 

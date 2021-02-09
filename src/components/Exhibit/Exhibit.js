@@ -3,6 +3,8 @@ import { useHistory, useLocation } from "react-router-dom";
 import '../../stylesheets/exhibit.css'
 /// REDUX IMPORTS
 import { useSelector, useDispatch } from 'react-redux'
+/// COMPONENTS
+import ExhibitTimeline from './ExhibitTimeline'
 
 function Exhibit() {
   const history = useHistory();
@@ -46,6 +48,9 @@ function Exhibit() {
       </div>
       <h1>{name}</h1>
       <h3>{description}</h3>
+      <div className="exhibit-view-container">
+        <ExhibitTimeline />
+      </div>
 
     </div>
   );
