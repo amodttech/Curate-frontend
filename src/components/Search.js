@@ -13,10 +13,12 @@ function Search() {
   const [query, setQuery] = useState("")
   const [artObjects, setArtObjects] = useState([])
   const [searching, setSearching] = useState(false)
+  const [notFound, setNotFound] = useState(false)
   const [currentExhibition, setCurrentExhibition] = useState(null)
   // HANDLERS
   function handleSubmit(event){
     event.preventDefault()
+    setNotFound(false)
     setSearching(true)
     fetchIds()
   }
@@ -33,7 +35,7 @@ function Search() {
       setArtObjects(artObjs)
       setSearching(false)
     } catch {
-      alert("not found");
+      setNotFound(true);
       setSearching(false)
     }
   }
@@ -62,6 +64,7 @@ function Search() {
           <button type="submit">SEARCH</button>
         </form>
         {searching ? <p className="search-saerching">Searching...</p> : null}
+        {notFound ? <p className="search-not-found">NO MATCHES</p> : null}
         <div className="search-exhibit-menu-container">
           Choose an exhibition to search for:
           <select id="categories" name="categories" placeholder="choose" onChange={(e) => setCurrentExhibition(e.target.value)}>

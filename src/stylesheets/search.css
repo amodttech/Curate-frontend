@@ -9,6 +9,12 @@ input {
 select {
 
 }
+.search-not-found {
+    text-align: center;
+    color: red;
+    font-size: 13px;
+
+}
 .search-saerching {
     text-align: center;
     opacity: 50%;

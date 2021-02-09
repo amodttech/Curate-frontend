@@ -6,67 +6,55 @@ import { useSelector, useDispatch } from 'react-redux'
 
 
 function SaveObject({artObjectSaveData, currentExhibition}) {
-  const history = useHistory();
-  // REDUX
-  const dispatch = useDispatch()
-  const user = useSelector((state) => state.user)
-  //// ------------
   // USESTATES
-  const [showName, setShowName] = useState("")
-  const [showDescription, setShowDescription] = useState("")
-  const [displayTheme, setDisplayTheme] = useState("")
-  const [artId, setArtId] = useState(null)
+  const [saved, setSaved] = useState(false)
   //// ------------
-  // Object Creator
+  console.log( `prop: current exhibition id:`, currentExhibition)
+  // EVENT HANDLERS
+
+  
+  async function handleSaveClick(){
+    const newArtObject = await postNewArtObject(artObjectSaveData)
+    await console.log('new art object', newArtObject)
+    const newExhibitionObject = await postNewExhibitionObject(newArtObject)
+    await console.log('new exhibit object', newExhibitionObject)
+    setSaved(true)
+    console.log('saved? ', saved)
+  }
+  // HELPERS  - Posts object, if MET_ID already exists in DB, return the existing object
+  async function postNewArtObject(artObjectSaveData){
+    const response = await fetch("http://localhost:3000/art_objects/", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(artObjectSaveData)
+    })
+    const returnedArtObj = await response.json()
+    return returnedArtObj
+  }
+  async function postNewExhibitionObject(newArtObject){
+  // OBJECT CREATOR
   const exhibitionObjectSaveData = {
-    art_object_id: artId,
-    exhibition_id: currentExhibition.id,
+    art_object_id: newArtObject.id,
+    exhibition_id: currentExhibition,
     order_number: null
   }
-  //// ------------
-  // EVENT HANDLERS
-  async function handleSaveClick(){
-    console.log('clicked save')
-    const artObjectResponse = await postNewArtObject(artObjectSaveData)
-
-    // const exhibitionObjectResponse = await postNewExhibitionObject(artObjectResponse)
-  }
-
-  // HELPERS  - Posts object, if MET_ID already exists in DB, return the existing object
-  function postNewArtObject(artObjectSaveData){
-    fetch("http://localhost:3000/art_objects/", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify(artObjectSaveData),
+  //// -----------
+  const response = await fetch("http://localhost:3000/exhibition_objects/", {
+      method: "POST",
+      headers: {
+          "Content-Type": "application/json",
+      },
+      body: JSON.stringify(exhibitionObjectSaveData),
     })
-    .then((r) => r.json())
-    .then((data) => {
-      console.log('returned art object: ' + data)
-      postNewExhibitionObject(data)
-      // history.push("/profile")
-    })
-  }
-  function postNewExhibitionObject(exhibitionObjectSaveData){
-    fetch("http://localhost:3000/exhibition_objects/", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify(exhibitionObjectSaveData),
-    })
-    .then((r) => r.json())
-    .then((data) => {
-      console.log('created exhibition object: ' + data)
-      // history.push("/profile")
-    })
+    return await response.json()
   }
 
 
   return (
     <div className="save-object-container" onClick={handleSaveClick}>
-      💾
+      {!saved ? <>💾</> : <>✅</>}
     </div>
   );
 }
