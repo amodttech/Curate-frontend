@@ -5,6 +5,7 @@ import '../../stylesheets/exhibit.css'
 import { useSelector, useDispatch } from 'react-redux'
 /// COMPONENTS
 import ExhibitTimeline from './ExhibitTimeline'
+import ExhibitGallery from './ExhibitGallery'
 
 function Exhibit() {
   const history = useHistory();
@@ -49,7 +50,7 @@ function Exhibit() {
       <h1>{name}</h1>
       <h3>{description}</h3>
       <div className="exhibit-view-container">
-        <ExhibitTimeline />
+        {(displayType === "gallery") ? <ExhibitGallery exhibitionData={exhibitionData} /> : <ExhibitTimeline exhibitionData={exhibitionData} />}
       </div>
 
     </div>

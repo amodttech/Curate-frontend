@@ -42,6 +42,12 @@ function NavBar() {
     dispatch(addExhibitions(""))
     dispatch(setUsername(""))
   }
+  function handleSignup(){
+    history.push("/signup")
+  }
+  function handleProfile(){
+    history.push("/profile")
+  }
   //// ------------
 
   
@@ -54,9 +60,11 @@ function NavBar() {
         {loggedIn  ? <>
           <div className="nav-button" onClick={handleExhibition}>YOUR EXHIBITIONS</div>
           <div className="nav-button" onClick={handleNewExhibition}>NEW EXHIBITION</div>
+          <div className="nav-button" onClick={handleProfile}>PROFILE</div>
           <div className="nav-button" onClick={handleLogout}>LOGOUT</div>
-          </> :
-          <div className="nav-button" onClick={handleLogin}>LOGIN</div>}
+          </> : <>
+          <div className="nav-button" onClick={handleLogin}>LOGIN</div>
+          <div className="nav-button" onClick={handleSignup}>SIGN UP</div></>}
       </div>
       {exhibitToggle ? <div className="nav-exhibit-menu">
           <ExhibitMenu />

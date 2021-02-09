@@ -1,0 +1,8 @@
+.exhibit-gallery-container {
+    padding: 5px;
+}
+.exhibit-gallery-carousel-card {
+    background-color: aquamarine;
+    height: 600px;
+    width: 600px;
+}

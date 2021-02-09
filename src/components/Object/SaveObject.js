@@ -5,12 +5,11 @@ import '../../stylesheets/save-object.css'
 import { useSelector, useDispatch } from 'react-redux'
 
 
-function SaveObject({artObjectSaveData}) {
+function SaveObject({artObjectSaveData, currentExhibition}) {
   const history = useHistory();
   // REDUX
   const dispatch = useDispatch()
   const user = useSelector((state) => state.user)
-  const currentExhibition = useSelector((state) => state.currentExhibition)
   //// ------------
   // USESTATES
   const [showName, setShowName] = useState("")
@@ -45,23 +44,24 @@ function SaveObject({artObjectSaveData}) {
     .then((r) => r.json())
     .then((data) => {
       console.log('returned art object: ' + data)
+      postNewExhibitionObject(data)
       // history.push("/profile")
     })
   }
-  // function postNewExhibitionObject(exhibitionObjectSaveData){
-  //   fetch("http://localhost:3000/exhibition_objects/", {
-  //       method: "POST",
-  //       headers: {
-  //           "Content-Type": "application/json",
-  //       },
-  //       body: JSON.stringify(exhibitionObjectSaveData),
-  //   })
-  //   .then((r) => r.json())
-  //   .then((data) => {
-  //     console.log('created exhibition object: ' + data)
-  //     // history.push("/profile")
-  //   })
-  // }
+  function postNewExhibitionObject(exhibitionObjectSaveData){
+    fetch("http://localhost:3000/exhibition_objects/", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(exhibitionObjectSaveData),
+    })
+    .then((r) => r.json())
+    .then((data) => {
+      console.log('created exhibition object: ' + data)
+      // history.push("/profile")
+    })
+  }
 
 
   return (

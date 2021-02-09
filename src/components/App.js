@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 // REDUX IMPORTS
-import {useDispatch, useSelector} from 'react-redux'
+import {useDispatch} from 'react-redux'
 // COMPONENT IMPORTS
 import NavBar from "./NavBar";
 import Home from "./Home";
@@ -10,14 +10,10 @@ import Profile from "./User/Profile";
 import Search from "./Search";
 import Exhibit from "./Exhibit/Exhibit"
 import NewExhibit from "./Exhibit/NewExhibit"
-
+import SignUp from "./User/SignUp"
 
 
 function App() {
-
-  // REDUX
-  const dispatch = useDispatch()
-  //
 
   return (
     <div className="tip-top-div">
@@ -37,6 +33,9 @@ function App() {
           </Route>
           <Route exact path="/search">
             <Search  />
+          </Route>
+          <Route exact path="/signup">
+            <SignUp  />
           </Route>
           <Route path="/exhibitions/:id">
             <Exhibit  />
