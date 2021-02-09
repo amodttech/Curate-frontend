@@ -11,7 +11,7 @@ function Home() {
   // REDUX
   const dispatch = useDispatch()
   const user = useSelector((state) => state.user)
-  const exhibitionsListFromStore = useSelector((state) => state.exhibitions)
+  const exhibitionsListFromStore = Object.values(useSelector((state) => state.exhibitions))
   //// ------------
   // USESTATES
   const [exhibitionsList, setExhibitionsList] = useState([])
@@ -27,7 +27,7 @@ function Home() {
   }, [])
   //// ------------
   // EXHIBIT LIST RENDERER
-  const exhibitionsComponents = exhibitionsList.map(exhibit => 
+  const exhibitionsComponents = exhibitionsListFromStore.map(exhibit => 
     <ExhibitCard key={exhibit.id} exhibit={exhibit}/>)
   //// ------------
   

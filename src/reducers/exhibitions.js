@@ -11,3 +11,4 @@ const exhibitionsReducer = (state = {}, action) => {
 }
 
 export default exhibitionsReducer
+

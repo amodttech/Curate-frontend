@@ -9,7 +9,8 @@ function Exhibit() {
     // REDUX
     const dispatch = useDispatch()
     const user = useSelector((state) => state.user)
-    const exhibitionsList = useSelector((state) => state.exhibitions.exhibitions)
+    const exhibitionsList = Object.values(useSelector((state) => state.exhibitions))
+    console.log(exhibitionsList)
     //// ------------
     // USESTATES
     // const [exhibitionsList, setExhibitionsList] = useState([])
@@ -26,7 +27,7 @@ function Exhibit() {
         exhibit.user_id === user.id)
     //// ------------
     // EXHIBIT LIST RENDERER
-    const exhibitionsComponents = exhibitionsList.map(exhibit => 
+    const exhibitionsComponents = userExhibitions.map(exhibit => 
         <li id={exhibit.id} 
             className="exhibit-menu-li"
             onClick={(event) => handleClick(event)}>
