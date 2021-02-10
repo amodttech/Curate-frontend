@@ -1,8 +1,19 @@
 .exhibit-gallery-container {
-    padding: 5px;
+    
 }
 .exhibit-gallery-carousel-card {
-    background-color: aquamarine;
-    height: 600px;
-    width: 600px;
+    /* max-height: 1000px;
+    max-width: 1000px;
+    min-width: 500px;
+    min-height: 500px; */
+
+}
+.exhibit-gallery-carousel-card-img {
+
+    max-height: 1000px;
+    max-width: 1000px;
+    /* padding: 15vmin; */
+}
+.exhibit-gallery-carousel-card-title {
+    height: 10%;
 }

@@ -13,29 +13,26 @@ function ExhibitGallery({exhibitionObjects}) {
   } 
 
   console.log('newArr', newArr)
+
+  // <div className="card-details"> 
+  // {item.title} {item.date} {item.artist} {item.image}  {item.description}
+  
+  // </div>
+
+  
  
-
-  // const state = {
-  //   items: [
-  //     {id: 1, title: 'item #1'},
-  //     {id: 2, title: 'item #2'},
-  //     {id: 3, title: 'item #3'},
-  //     {id: 4, title: 'item #4'},
-  //     {id: 5, title: 'item #5'},
-
-  //   ]
-  // }
-
-  // const gallery = {
-  //   items: []
-  // }
 
   return (
     <div className="exhibit-gallery-container">
-
       <div className="exhibit-gallery-carousel">
         <Carousel>
-        {newArr.map(item => <div className="exhibit-gallery-carousel-card" key={item.id}>{item.title} {item.date}</div>)}
+          {newArr.map(item => 
+          <div className="exhibit-gallery-carousel-card" key={item.id}>
+            <div className="exhibit-gallery-carousel-card-title">
+              {item.title}
+            </div>
+            <img className="exhibit-gallery-carousel-card-img" src={item.image} />
+          </div>)}
         </Carousel>
       </div>
     </div>
