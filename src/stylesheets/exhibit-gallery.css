@@ -2,18 +2,31 @@
     
 }
 .exhibit-gallery-carousel-card {
-    /* max-height: 1000px;
-    max-width: 1000px;
-    min-width: 500px;
-    min-height: 500px; */
-
-}
-.exhibit-gallery-carousel-card-img {
-
     max-height: 1000px;
     max-width: 1000px;
+    min-width: 500px;
+    min-height: 500px;
+
+}
+.exhibit-gallery-carousel-card-img-container {
+    display: block;
+    margin: 0 auto;
+}
+.exhibit-gallery-carousel-card-img {
+    
+    max-height: 600px;
+    max-width: 1000px;
+    display: block;
+    margin: 0 auto;
     /* padding: 15vmin; */
 }
 .exhibit-gallery-carousel-card-title {
-    height: 10%;
+    padding: 30px;
+    font-size: 40px;
+}
+.exhibit-gallery-carousel-card-artist {
+    padding: 30px
+}
+.exhibit-gallery-carousel-card-date {
+    padding: 30px
 }

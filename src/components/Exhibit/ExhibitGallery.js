@@ -28,9 +28,9 @@ function ExhibitGallery({exhibitionObjects}) {
         <Carousel>
           {newArr.map(item => 
           <div className="exhibit-gallery-carousel-card" key={item.id}>
-            <div className="exhibit-gallery-carousel-card-title">
-              {item.title}
-            </div>
+            <div className="exhibit-gallery-carousel-card-title">{item.title}</div>
+            {item.artist ? <div className="exhibit-gallery-carousel-card-artist">{item.artist}</div> : null}
+            <div className="exhibit-gallery-carousel-card-date">{item.date}</div>
             <img className="exhibit-gallery-carousel-card-img" src={item.image} />
           </div>)}
         </Carousel>
