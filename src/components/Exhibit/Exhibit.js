@@ -15,7 +15,10 @@ function Exhibit() {
   // USESTATES
   const [exhibitionData, setExhibitionData] = useState({})
   const [displayType, setDisplayType] = useState("gallery")
+  console.log('exhibitionData', exhibitionData)
   const {id, user_id, name, description, theme, exhibition_objects} = exhibitionData
+  // console.log('exhibtiion-objects', exhibition_objects)
+
   //// ------------
   // EVENT HANDLERS
   function setGallery(){
@@ -35,7 +38,10 @@ function Exhibit() {
   }, [location.pathname])
   //// ------------
 
-    const galleryObjects = exhibition_objects
+  // const newArr = exhibition_objects.map((object) => object.art_object)
+
+  
+
   
 
   return (
@@ -51,7 +57,7 @@ function Exhibit() {
       <h1>{name}</h1>
       <h3>{description}</h3>
       <div className="exhibit-view-container">
-        {(displayType === "gallery") ? <ExhibitGallery exhibitionObjects={galleryObjects} theme={theme}/> : <ExhibitTimeline exhibitionObjects={galleryObjects} theme={theme}/>}
+        {(displayType === "gallery") ? <ExhibitGallery exhibitionObjects={exhibition_objects} theme={theme}/> : <ExhibitTimeline exhibitionObjects={exhibition_objects} theme={theme}/>}
       </div>
 
     </div>
