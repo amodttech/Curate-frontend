@@ -24,7 +24,7 @@ function Home() {
       setExhibitionsList(data)
       dispatch(setExhibitions(data))
     })
-  }, [])
+  }, [dispatch])
   //// ------------
   // EXHIBIT LIST RENDERER
   const exhibitionsComponents = exhibitionsListFromStore.map(exhibit => 

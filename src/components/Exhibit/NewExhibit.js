@@ -1,20 +1,17 @@
 import React, {useState} from 'react';
-import { useHistory } from "react-router-dom";
 import '../../stylesheets/exhibit-new.css'
 /// COMPONENTS
 
 /// REDUX IMPORTS
 import { useSelector, useDispatch } from 'react-redux'
-import {addToExhibitions, setExhibitions} from '../../actions'
+import {addToExhibitions} from '../../actions'
 
 
 function NewExhibit() {
-  
-  const history = useHistory();
+
   // REDUX
   const dispatch = useDispatch()
   const user = useSelector((state) => state.user)
-  const loggedIn = useSelector((state) => state.loggedIn)
   //// ------------
   // USESTATES
   const [showName, setShowName] = useState("")

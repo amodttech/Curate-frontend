@@ -1,17 +1,12 @@
 import React from 'react';
-import { useHistory, useLocation } from "react-router-dom";
 import '../../stylesheets/exhibit-timeline.css'
-/// REDUX IMPORTS
-import { useSelector, useDispatch } from 'react-redux'
-/// COMPONENTS
-import ObjectCard from '../Object/ObjectCard'
 // TIMELINE IMPORTS
 import Timeline from 'react-image-timeline';
 require('react-image-timeline/dist/timeline.css');
 
 function ExhibitTimeline({exhibitionData}) {
   
-  const {id, name, theme, description, exhibition_objects} = exhibitionData
+  // const {id, name, theme, description, exhibition_objects} = exhibitionData
 
   const events = [
     {

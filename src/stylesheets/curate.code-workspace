@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../../../../met-api-test/met-api"
+		},
+		{
+			"path": "../../../../timeline-test"
+		}
+	],
+	"settings": {}
+}

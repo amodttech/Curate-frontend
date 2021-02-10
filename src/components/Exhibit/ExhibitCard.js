@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 function ExhibitCard({key, exhibit}) {
 
-  const {id, name, description, theme} = exhibit
+  const {id, name, description} = exhibit
 
   return (
     <>

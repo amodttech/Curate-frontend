@@ -1,17 +1,15 @@
 import React, {useEffect, useState} from 'react';
-import { useHistory, useLocation } from "react-router-dom";
+import {useLocation} from "react-router-dom";
 import '../../stylesheets/exhibit.css'
 /// REDUX IMPORTS
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector} from 'react-redux'
 /// COMPONENTS
 import ExhibitTimeline from './ExhibitTimeline'
 import ExhibitGallery from './ExhibitGallery'
 
 function Exhibit() {
-  const history = useHistory();
   const location = useLocation();
   // REDUX
-  const dispatch = useDispatch()
   const user = useSelector((state) => state.user)
   //// ------------
   // USESTATES
@@ -34,8 +32,11 @@ function Exhibit() {
     .then((data) => {
       setExhibitionData(data)
     })
-  }, [])
+  }, [location.pathname])
   //// ------------
+
+    const galleryObjects = exhibition_objects
+  
 
   return (
     <div className="exhibit-container">
@@ -50,7 +51,7 @@ function Exhibit() {
       <h1>{name}</h1>
       <h3>{description}</h3>
       <div className="exhibit-view-container">
-        {(displayType === "gallery") ? <ExhibitGallery exhibitionData={exhibitionData} /> : <ExhibitTimeline exhibitionData={exhibitionData} />}
+        {(displayType === "gallery") ? <ExhibitGallery exhibitionObjects={galleryObjects} theme={theme}/> : <ExhibitTimeline exhibitionObjects={galleryObjects} theme={theme}/>}
       </div>
 
     </div>

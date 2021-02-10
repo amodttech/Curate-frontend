@@ -1,8 +1,6 @@
 import React, {useState} from 'react';
-import { useHistory } from "react-router-dom";
 import '../../stylesheets/save-object.css'
 /// REDUX IMPORTS
-import { useSelector, useDispatch } from 'react-redux'
 
 
 function SaveObject({artObjectSaveData, currentExhibition}) {

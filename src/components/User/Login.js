@@ -6,7 +6,7 @@ import '../../stylesheets/login.css'
 /// REDUX IMPORTS
 import {useDispatch} from 'react-redux'
 import { setId, setDisplayName, setBio, addExhibitions, setUsername } from '../../reducers/userSlice'
-import {isLoggedIn, isLoggedOut} from '../../actions'
+import {isLoggedIn} from '../../actions'
 
 function Login() {
   let history = useHistory()

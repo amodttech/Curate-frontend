@@ -12,7 +12,6 @@ function NavBar() {
   const history = useHistory();
   // REDUX
   const dispatch = useDispatch()
-  const user = useSelector((state) => state.user)
   const loggedIn = useSelector((state) => state.loggedIn)
   //// ------------
   // USESTATES

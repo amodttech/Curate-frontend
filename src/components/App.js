@@ -1,7 +1,5 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-// REDUX IMPORTS
-import {useDispatch} from 'react-redux'
 // COMPONENT IMPORTS
 import NavBar from "./NavBar";
 import Home from "./Home";

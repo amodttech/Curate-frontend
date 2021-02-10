@@ -2,12 +2,11 @@ import React from 'react';
 import '../../stylesheets/exhibit-menu.css'
 import { useHistory } from "react-router-dom";
 /// REDUX IMPORTS
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector} from 'react-redux'
 
 function Exhibit() {
     const history = useHistory();
     // REDUX
-    const dispatch = useDispatch()
     const user = useSelector((state) => state.user)
     const exhibitionsList = Object.values(useSelector((state) => state.exhibitions))
     console.log(exhibitionsList)

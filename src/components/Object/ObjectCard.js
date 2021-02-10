@@ -3,7 +3,7 @@ import "../../stylesheets/object-card.css"
 /// COMPONENTS
 import SaveObject from './SaveObject'
 /// REDUX IMPORTS
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector} from 'react-redux'
 
 function ObjectCard({artObject, currentExhibition}) {
   const {objectID, objectURL, title, primaryImage, primaryImageSmall, artistDisplayName, objectDate, artistNationality} = artObject
@@ -40,7 +40,7 @@ function ObjectCard({artObject, currentExhibition}) {
         </div>
       </div>
       <div className="object-card-bottom-panel" >
-        <a className="met-link" href={objectURL} target="_blank">Click to see on https://www.metmuseum.org/</a>
+        <a className="met-link" href={objectURL} target="_blank" rel="noreferrer">Click to see on https://www.metmuseum.org/</a>
       </div>
       
     </div>
