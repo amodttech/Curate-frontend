@@ -21,7 +21,7 @@ function Home() {
     fetch("http://localhost:3000/exhibitions")
     .then((r) => r.json())
     .then((data) => {
-      setExhibitionsList(data)
+      // setExhibitionsList(data)
       dispatch(setExhibitions(data))
     })
   }, [dispatch])
@@ -37,7 +37,7 @@ function Home() {
       <h1>Welcome Home {user ? user.display_name : ""}</h1>
       <p></p>
       <p>If you were going to curate a show using art from throughout all art history, what would the theme be?</p>
-      {exhibitionsList ? 
+      {exhibitionsListFromStore ? 
       <ul className="home-exhibit-list">{exhibitionsComponents}</ul> : 
       null}
     </div>

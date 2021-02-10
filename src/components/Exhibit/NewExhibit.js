@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import { useHistory } from 'react-router-dom';
 import '../../stylesheets/exhibit-new.css'
 /// COMPONENTS
 
@@ -8,7 +9,7 @@ import {addToExhibitions} from '../../actions'
 
 
 function NewExhibit() {
-
+  let history = useHistory()
   // REDUX
   const dispatch = useDispatch()
   const user = useSelector((state) => state.user)
@@ -38,7 +39,7 @@ function NewExhibit() {
     .then((data) => {
       console.log(data)
       dispatch(addToExhibitions(data))
-      // history.push("/profile")
+      history.push(`/exhibitions/${data.id}`)
     })
   }
 
