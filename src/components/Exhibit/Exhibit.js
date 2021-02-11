@@ -11,27 +11,42 @@ import EditExhibit from './EditExhibit';
 function Exhibit() {
   let history = useHistory()
   const location = useLocation();
+  const currentId = location.pathname.split('/')[2]
   // REDUX
   const user = useSelector((state) => state.user)
   const exhibitionsListFromStore = Object.values(useSelector((state) => state.exhibitions))
-  console.log('exhibitionsListFromStore', exhibitionsListFromStore)
+  const exhibitListSize = Object.keys(exhibitionsListFromStore).length
   //// ------------
-
-  // help to extract this exhibition from state
-
-  const thisExhibitFromState = exhibitionsListFromStore.filter(exhbitionObj => exhbitionObj.id === location.pathname)
-  console.log("thisExhibitFromState", thisExhibitFromState)
-
-
-
-
   // USESTATES
-  const [exhibitionData, setExhibitionData] = useState({})
   const [editToggle, setEditToggle] = useState(false)
   const [displayType, setDisplayType] = useState("gallery")
-  console.log('exhibitionData', exhibitionData)
-  const {id, user_id, name, description, theme, exhibition_objects} = exhibitionData
-  // console.log('exhibtion-objects', exhibition_objects)
+  const [userId, setUserId] = useState(null)
+  const [exhibitionObjects, setExhibitionObjects] = useState([])
+  const [exhibitionData, setExhibitionData] = useState({})
+  //// ------------
+  // DESTRUCTURE
+  const {id, name, description, theme} = exhibitionData
+  //// ------------
+  // HELPER FUNCTIONS
+  function getExhibition(){
+    fetch(`http://localhost:3000${location.pathname}`)
+      .then((r) => r.json())
+      .then((data) => {
+        setExhibitionData(data)
+        setExhibitionObjects(data.exhibition_objects)
+        setUserId(data.user_id)
+      })
+  }
+  useEffect(() => {
+    if (exhibitListSize > 0){
+      const thisExhibitFromState = exhibitionsListFromStore.filter(object => object.id === parseInt(currentId))
+      setExhibitionObjects(thisExhibitFromState[0].exhibition_objects)
+      setExhibitionData(thisExhibitFromState[0])
+      setUserId(thisExhibitFromState[0].user_id)
+    } else {
+      getExhibition()
+    }
+  }, [])
   //// ------------
   // EVENT HANDLERS
   function setGallery(){
@@ -50,21 +65,12 @@ function Exhibit() {
     setEditToggle(!editToggle)
   }
   //// ------------
-  // USE EFFECTS
-  useEffect(() => {   ///// Initial Fetch for Exhibition Data
-    fetch(`http://localhost:3000${location.pathname}`)
-    .then((r) => r.json())
-    .then((data) => {
-      setExhibitionData(data)
-    })
-  }, [location.pathname])
-  //// ------------
-  
+
 
   return (
     <div className="exhibit-container">
       <div className="exhibit-controller">
-        {(user.id === user_id) 
+        {(user.id === userId) 
         ? <><div onClick={handleEdit} className="exhibit-controller-button">EDIT</div>
         <div onClick={handleDelete} className="exhibit-controller-button">DELETE</div></>
         : null}
@@ -75,9 +81,8 @@ function Exhibit() {
       <h1>{name}</h1>
       <h3>{description}</h3>
       <div className="exhibit-view-container">
-        {(displayType === "gallery") ? <ExhibitGallery exhibitionObjects={exhibition_objects} theme={theme}/> : <ExhibitTimeline exhibitionObjects={exhibition_objects} theme={theme}/>}
+        {(displayType === "gallery") ? <ExhibitGallery exhibitionObjects={exhibitionObjects} theme={theme}/> : <ExhibitTimeline exhibitionObjects={exhibitionObjects} theme={theme}/>}
       </div>
-
     </div>
   );
 }

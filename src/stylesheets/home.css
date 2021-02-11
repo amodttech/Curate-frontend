@@ -4,6 +4,8 @@
 }
 
 .home-exhibit-list {
-    
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
     list-style-type: none;
 }

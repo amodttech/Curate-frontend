@@ -1,5 +1,5 @@
 .exhibit-container {
-    
+    border: 1px solid red;
 }
 .exhibit-controller {
     height: 50px;
@@ -28,5 +28,5 @@
     color: yellow;
 }
 .exhibit-view-container {
-    
+    border: 1px solid green;
 }

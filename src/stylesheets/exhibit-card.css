@@ -1,7 +1,9 @@
 .exhibit-card {
+    margin-inline: 10px;
     width: 300px;
     height: 200px;
     text-align: center;
+    background-color: black;
 }
 
 p {
