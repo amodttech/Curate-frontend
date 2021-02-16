@@ -1,5 +1,4 @@
 .exhibit-container {
-    border: 1px solid red;
 }
 .exhibit-controller {
     height: 50px;
@@ -8,7 +7,7 @@
     display: inline;
     padding: 5px;
     width: fit-content;
-    height: 30px;
+    height: fit-content;
     line-height: 30px;
     background: linear-gradient(180deg, rgba(233,233,233,1) 61%, rgba(152,152,152,1) 94%);
     font-size: medium;
@@ -27,6 +26,9 @@
     font-size: medium;
     color: yellow;
 }
-.exhibit-view-container {
-    border: 1px solid green;
+.exhibit-title-title {
+    font-size: 30px;
+}
+.exhibit-title-description {
+    font-size: 18px;
 }

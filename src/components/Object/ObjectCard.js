@@ -17,8 +17,7 @@ function ObjectCard({artObject, currentExhibition}) {
     artist: artistDisplayName,
     date: objectDate,
     origin: artistNationality,
-    image: primaryImage,
-    description: ""
+    image: primaryImage
   }
 
   //// ------------

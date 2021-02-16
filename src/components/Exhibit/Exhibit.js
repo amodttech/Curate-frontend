@@ -18,7 +18,6 @@ function Exhibit() {
   const exhibitListSize = Object.keys(exhibitionsListFromStore).length
   //// ------------
   // USESTATES
-  const [editToggle, setEditToggle] = useState(false)
   const [displayType, setDisplayType] = useState("gallery")
   const [userId, setUserId] = useState(null)
   const [exhibitionObjects, setExhibitionObjects] = useState([])
@@ -46,7 +45,10 @@ function Exhibit() {
     } else {
       getExhibition()
     }
-  }, [])
+  }, [userId])
+
+  console.log('exhibitionObjects', exhibitionObjects)
+  console.log('description', description)
   //// ------------
   // EVENT HANDLERS
   function setGallery(){
@@ -55,33 +57,40 @@ function Exhibit() {
   function setTimeline(){
     setDisplayType("timeline")
   }
+  function setEditView(){
+    setDisplayType("edit")
+  }
   function handleDelete(){
     fetch(`http://localhost:3000/exhibitions/${id}`, {
         method: "Delete"
     })
     history.push("/")
   }
-  function handleEdit(){
-    setEditToggle(!editToggle)
-  }
+  // function handleEdit(){
+  //   setEditToggle(!editToggle)
+  // }
   //// ------------
-
+console.log('exhibitionData exhibit view', exhibitionData)
 
   return (
     <div className="exhibit-container">
       <div className="exhibit-controller">
-        {(user.id === userId) 
-        ? <><div onClick={handleEdit} className="exhibit-controller-button">EDIT</div>
-        <div onClick={handleDelete} className="exhibit-controller-button">DELETE</div></>
-        : null}
+        {(user.id === userId)? 
+        <div onClick={setEditView} className={(displayType === "edit") ? "exhibit-controller-button-current" : "exhibit-controller-button"}>EDIT VIEW</div> : null }
+
+
         <div onClick={setGallery} className={(displayType === "gallery") ? "exhibit-controller-button-current" : "exhibit-controller-button"}>GALLERY VIEW</div>
-        <div onClick={setTimeline} className={(displayType === "timeline") ? "exhibit-controller-button-current" : "exhibit-controller-button"}>TIMELINE VIEW</div>
+        {/* <div onClick={setTimeline} className={(displayType === "timeline") ? "exhibit-controller-button-current" : "exhibit-controller-button"}>TIMELINE VIEW</div> */}
+        {/* <div onClick={handleDelete} className="exhibit-controller-button">DELETE</div> */}
       </div>
-      {editToggle ? <div><EditExhibit handleEdit={handleEdit} exhibitionData={exhibitionData} /></div> : null}
-      <h1>{name}</h1>
-      <h3>{description}</h3>
-      <div className="exhibit-view-container">
-        {(displayType === "gallery") ? <ExhibitGallery exhibitionObjects={exhibitionObjects} theme={theme}/> : <ExhibitTimeline exhibitionObjects={exhibitionObjects} theme={theme}/>}
+      <div className="exhibit-title">
+        <p className="exhibit-title-title">{name}</p>
+        <p className="exhibit-title-description">{description}</p>
+      </div>
+      <div className="exhibit-display-container">
+        {(displayType === "edit") ? <EditExhibit exhibitionObjects={exhibitionObjects} exhibitionData={exhibitionData}/> : null}
+        {(displayType === "gallery") ? <ExhibitGallery exhibitionObjects={exhibitionObjects} theme={theme}/>  : null}
+        {/* {(displayType === "timeline") ? <ExhibitTimeline exhibitionObjects={exhibitionObjects} theme={theme}/> : null} */}
       </div>
     </div>
   );

@@ -36,7 +36,8 @@ function SaveObject({artObjectSaveData, currentExhibition}) {
   const exhibitionObjectSaveData = {
     art_object_id: newArtObject.id,
     exhibition_id: currentExhibition,
-    order_number: null
+    order_number: null,
+    description: ""
   }
   //// -----------
   const response = await fetch("http://localhost:3000/exhibition_objects/", {

@@ -1,0 +1,69 @@
+.edit-object-card-container {
+    border: 1px solid black;
+    margin: 5px;
+    width: 300px;
+    height: 525px;
+    
+}
+.edit-object-card-top-panel {
+    border: 1px solid yellow;
+    height: 300px;
+    background-position: center;
+    background-size: cover;
+}
+.edit-object-card-details {
+
+}
+
+.edit-object-card-artist {
+    font-size: 16px;
+}
+.edit-object-card-title {
+
+}
+.edit-object-card-date {
+    font-size: 12px;
+}
+.edit-object-card-middle-panel {
+    border: 1px solid red;
+   height: 200px;
+}
+.edit-object-card-form {
+    width: 100%;
+    height: 55px;
+}
+.edit-object-card-order-number-input {
+    height: 100%;
+    width: 15%;
+    margin: 0%;
+    font-size: 200%;
+    border-radius: 10px;
+    background-color: grey;
+}
+.edit-object-card-description-field {
+    width: 100%;
+    height: 100%;
+}
+.edit-object-card-p {
+
+}
+.edit-object-card-form-button {
+
+}
+.saved {
+    color: greenyellow;
+}
+.edit-object-card-bottom-panel {
+    border: 1px solid purple;
+    height: 25px;
+text-align: center;
+}
+.met-link {
+    
+    background-color: rgba(255, 156, 21, 0.2) ;
+    font-size: 12px;
+    height: 100%;
+}
+
+
+

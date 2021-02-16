@@ -5,33 +5,27 @@ body {
   background-color: darkgray;
   color: white;
   text-shadow: 1px 1px 4px black;
-  padding: 10px;
   font-weight: 12px;
 }
 a:link {
   color: white;
   text-shadow: 1px 1px 4px black;
-  padding: 10px;
   font-weight: 12px;
 }
 a:visited {
   color: white;
   text-shadow: 1px 1px 4px black;
-  padding: 10px;
   font-weight: 12px;
 }
 a:active {
   color: white;
   text-shadow: 1px 1px 4px black;
-  padding: 10px;
   font-weight: 12px;
 }
 a:hover {
   color: white;
   text-shadow: 1px 1px 4px black;
-  padding: 10px;
   font-weight: 12px;
-  /* background: linear-gradient(180deg, rgba(233,233,233,1) 61%, rgba(152,152,152,1) 80%); */
 }
 h1 {
   font-size: 34px;
@@ -47,15 +41,13 @@ h3 {
 }
 
 .tip-top-div{
-  /* width: 90%; */
-  margin: 0 auto;
+
 }
 
 .app-nav {
-  /* width: 85%; */
+
 }
 
 .app-body {
-  width: 100%;
-  margin-top: 20px;
+
 }
