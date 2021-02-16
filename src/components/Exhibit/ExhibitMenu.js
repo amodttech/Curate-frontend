@@ -9,14 +9,12 @@ function Exhibit() {
     // REDUX
     const user = useSelector((state) => state.user)
     const exhibitionsList = Object.values(useSelector((state) => state.exhibitions))
-    console.log(exhibitionsList)
     //// ------------
     // USESTATES
     // const [exhibitionsList, setExhibitionsList] = useState([])
     //// ------------
     // HANDLERS
     function handleClick(event){
-        console.log('click: ' + event.target.id)
         const exhibitID = event.target.id
         history.push(`/exhibitions/${exhibitID}`)
     }

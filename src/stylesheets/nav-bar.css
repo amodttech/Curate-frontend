@@ -34,16 +34,16 @@
     cursor: pointer;
 }
 .nav-exhibit-menu{
-    float: left;
+    /* float: left; */
     position: absolute;
-    left: 235px;
-    top: 55px;
-    background-color: grey;
-
-    width: 500px;
-    max-height: 600px;
-    overflow: scroll;
+    left: 10%;
+    /* top: 55px; */
+    background-color: #6c757dff;
+    width: 40%;
+    /* max-height: 600px; */
+    /* overflow: scroll; */
     padding:5px;
+    padding-right: 20px;
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
     border-top-right-radius: 8px;

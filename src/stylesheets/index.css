@@ -1,31 +1,48 @@
 /* * { border: 1px solid black; } */
 
+/* greyscale color palette */
+
+/* CSS HEX */
+/* --cultured: #f8f9faff;
+--cultured-2: #e9ecefff;
+--gainsboro: #dee2e6ff;
+--light-gray: #ced4daff;
+--cadet-blue-crayola: #adb5bdff;
+--slate-gray: #6c757dff;
+--davys-grey: #495057ff;
+--gunmetal: #343a40ff;
+--charleston-green: #212529ff; */
+
+
+
 body {
   font-family: Arial, Helvetica, sans-serif; 
-  background-color: darkgray;
-  color: white;
+  background-color: #adb5bdff;
+  color: #f8f9faff;
   text-shadow: 1px 1px 4px black;
   font-weight: 12px;
 }
 a:link {
-  color: white;
+  color: #f8f9faff;
   text-shadow: 1px 1px 4px black;
   font-weight: 12px;
+  text-decoration: none;
+
 }
 a:visited {
-  color: white;
+  color: #f8f9faff;
   text-shadow: 1px 1px 4px black;
   font-weight: 12px;
 }
 a:active {
-  color: white;
+  color: #f8f9faff;
   text-shadow: 1px 1px 4px black;
   font-weight: 12px;
 }
 a:hover {
-  color: white;
+  color: #f8f9faff;
   text-shadow: 1px 1px 4px black;
-  font-weight: 12px;
+  font-weight: 14px;
 }
 h1 {
   font-size: 34px;

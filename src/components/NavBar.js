@@ -50,7 +50,6 @@ function NavBar() {
   //// ------------
 
   
-  console.log(loggedIn)
   return (
     <>
       <div className="nav-container">

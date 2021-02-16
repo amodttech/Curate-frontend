@@ -1,14 +1,10 @@
 import React, {useState} from 'react';
 import "../../stylesheets/edit-object-card.css"
-/// COMPONENTS
-import ObjectOrder from '../Object/ObjectOrder'
-/// REDUX IMPORTS
-import { useSelector} from 'react-redux'
 
 function EditObjectCard({exhibit}) {
  
   console.log('exhibit', exhibit)
-  const {artist, date, image, met_id, origin, title} = exhibit.art_object
+  const {artist, date, image, met_id, title} = exhibit.art_object
   const {id, order_number, description} = exhibit
 
   const [newDescription, setNewDescription] = useState(description)
@@ -30,16 +26,12 @@ function EditObjectCard({exhibit}) {
     })
     .then((r) => r.json())
     .then((data) => {
-      console.log('returned object:', data)
       setSaved(true)
       // dispatch(addToExhibitions(data))
       // history.push(`/exhibitions/${id}`)
     })
     
   }
-
-console.log('newOrderNumber', newOrderNumber)
-console.log('newDescription', newDescription)
 
   return (
     <div className="edit-object-card-container" >

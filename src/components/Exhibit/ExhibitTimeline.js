@@ -20,7 +20,7 @@ function ExhibitTimeline({exhibitionObjects}) {
   )} 
 
 
-  function dateTranslate(dateData){
+  // function dateTranslate(dateData){
     /*  possible date formats
     ca. 1864
     ca. 1820–22

@@ -4,7 +4,7 @@ import '../../stylesheets/exhibit.css'
 /// REDUX IMPORTS
 import { useSelector} from 'react-redux'
 /// COMPONENTS
-import ExhibitTimeline from './ExhibitTimeline'
+// import ExhibitTimeline from './ExhibitTimeline'
 import ExhibitGallery from './ExhibitGallery'
 import EditExhibit from './EditExhibit';
 
@@ -47,30 +47,28 @@ function Exhibit() {
     }
   }, [userId])
 
-  console.log('exhibitionObjects', exhibitionObjects)
-  console.log('description', description)
   //// ------------
   // EVENT HANDLERS
   function setGallery(){
     setDisplayType("gallery")
   }
-  function setTimeline(){
-    setDisplayType("timeline")
-  }
+  // function setTimeline(){
+  //   setDisplayType("timeline")
+  // }
   function setEditView(){
     setDisplayType("edit")
   }
-  function handleDelete(){
-    fetch(`http://localhost:3000/exhibitions/${id}`, {
-        method: "Delete"
-    })
-    history.push("/")
-  }
+  // function handleDelete(){
+  //   fetch(`http://localhost:3000/exhibitions/${id}`, {
+  //       method: "Delete"
+  //   })
+  //   history.push("/")
+  // }
   // function handleEdit(){
   //   setEditToggle(!editToggle)
   // }
   //// ------------
-console.log('exhibitionData exhibit view', exhibitionData)
+
 
   return (
     <div className="exhibit-container">

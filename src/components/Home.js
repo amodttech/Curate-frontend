@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useEffect} from 'react';
 import '../stylesheets/home.css'
 /// COMPONENTS
 import ExhibitCard from './Exhibit/ExhibitCard'
@@ -13,9 +13,6 @@ function Home() {
   const user = useSelector((state) => state.user)
   const exhibitionsListFromStore = Object.values(useSelector((state) => state.exhibitions))
   //// ------------
-  // USESTATES
-  const [exhibitionsList, setExhibitionsList] = useState([])
-  //// ------------
   // USE EFFECTS
   useEffect(() => {   ///// Initial Fetch for Exhibitions Index
     fetch("http://localhost:3000/exhibitions")
@@ -27,10 +24,15 @@ function Home() {
   }, [dispatch])
   //// ------------
   // EXHIBIT LIST RENDERER
-  const exhibitionsComponents = exhibitionsListFromStore.map(exhibit => 
+
+  const exhibitionsWithObjects = exhibitionsListFromStore.filter(exhibit => // filters out exhibitions without objects saved
+    exhibit.exhibition_objects.length >= 1)
+
+  const exhibitionsComponents = exhibitionsWithObjects.map(exhibit => 
     <ExhibitCard key={exhibit.id} exhibit={exhibit}/>)
   //// ------------
   
+  console.log('exhibitionsListFromStore', exhibitionsListFromStore)
 
   return (
     <div className="home-container">

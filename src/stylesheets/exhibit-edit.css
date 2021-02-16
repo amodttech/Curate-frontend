@@ -18,6 +18,9 @@ button {
     margin-inline: 5px;
     margin-block: 2px;
 }
+.exhibit-edit-delete {
+    color: red;
+}
 .exhibit-edit-ul {
     width: 100%;
     display: flex;

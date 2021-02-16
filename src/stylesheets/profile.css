@@ -46,3 +46,7 @@ h3 {
 .profile-submit {
     
 }
+
+.profile-delete {
+    color: red;
+}

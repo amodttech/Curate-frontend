@@ -7,17 +7,13 @@ function SaveObject({artObjectSaveData, currentExhibition}) {
   // USESTATES
   const [saved, setSaved] = useState(false)
   //// ------------
-  console.log( `prop: current exhibition id:`, currentExhibition)
   // EVENT HANDLERS
 
   
   async function handleSaveClick(){
     const newArtObject = await postNewArtObject(artObjectSaveData)
-    await console.log('new art object', newArtObject)
     const newExhibitionObject = await postNewExhibitionObject(newArtObject)
-    await console.log('new exhibit object', newExhibitionObject)
     setSaved(true)
-    console.log('saved? ', saved)
   }
   // HELPERS  - Posts object, if MET_ID already exists in DB, return the existing object
   async function postNewArtObject(artObjectSaveData){

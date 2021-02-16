@@ -17,7 +17,7 @@ function NewExhibit() {
   // USESTATES
   const [showName, setShowName] = useState("")
   const [showDescription, setShowDescription] = useState("")
-  const [displayTheme, setDisplayTheme] = useState("")
+  // const [displayTheme, setDisplayTheme] = useState("")
   //// ------------
   // EVENT HANDLERS
   function handleSubmit(e){
@@ -26,7 +26,8 @@ function NewExhibit() {
       user_id: user.id,
       name: showName,
       description: showDescription,
-      theme: displayTheme
+      // theme: displayTheme
+      theme: null
     }
     fetch("http://localhost:3000/exhibitions/", {
         method: "POST",
@@ -37,14 +38,11 @@ function NewExhibit() {
     })
     .then((r) => r.json())
     .then((data) => {
-      console.log(data)
       dispatch(addToExhibitions(data))
       history.push(`/exhibitions/${data.id}`)
     })
   }
 
-
-  console.log(`user_id:${user.id}, name:${showName}, description:${showDescription}, theme:${displayTheme}`)
 
 
   return (
@@ -63,7 +61,7 @@ function NewExhibit() {
         <div className="exhibit-new-label">
           <input type="text" id="description" value={showDescription} onChange={(e) => setShowDescription(e.target.value)} />
         </div>
-        <div className="exhibit-new-label">
+        {/* <div className="exhibit-new-label">
           <h3>What kind of theme would you like for the display?</h3>
         </div>
         <div className="exhibit-new-dropdown">
@@ -73,7 +71,7 @@ function NewExhibit() {
             <option value="erratic">Erratic</option>
             <option value="sensible">Sensible</option>
           </select>
-        </div>
+        </div> */}
         <div className="login-submit">
           <button type="submit">SUBMIT</button>
         </div>

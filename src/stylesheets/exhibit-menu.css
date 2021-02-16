@@ -5,9 +5,15 @@
     list-style-type: none;
 }
 .exhibit-menu-li {
-
+    cursor: pointer;
+}
+.exhibit-menu-li:hover {
+    cursor: pointer;
+    padding-block: 3px;
+    
 }
 .exhibit-menu-description {
     font-size: small;
     opacity: 60%;
 }
+

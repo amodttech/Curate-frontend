@@ -15,6 +15,7 @@ function Search() {
   const [searching, setSearching] = useState(false)
   const [notFound, setNotFound] = useState(false)
   const [currentExhibition, setCurrentExhibition] = useState(null)
+  const [exhibitionSelected, setExhibitionSelected] = useState(false)
   // HANDLERS
   function handleSubmit(event){
     event.preventDefault()
@@ -50,9 +51,15 @@ function Search() {
   //// ------------
   // Render the objects
   const artObjectComponents = artObjects.map(artObject => {
-    return <ObjectCard key={artObject.id} artObject={artObject} currentExhibition={currentExhibition}/>
+    return <ObjectCard key={artObject.id} artObject={artObject} currentExhibition={currentExhibition} exhibitionSelected={exhibitionSelected}/>
   })
   //// ------------
+
+  function handleSelect(event){
+    setExhibitionSelected(true)
+    setCurrentExhibition(event)
+  }
+
 
   return (
     <div className="search-container">
@@ -66,11 +73,16 @@ function Search() {
         {searching ? <p className="search-saerching">Searching...</p> : null}
         {notFound ? <p className="search-not-found">NO MATCHES</p> : null}
         <div className="search-exhibit-menu-container">
-          Choose an exhibition to search for:
-          <select id="categories" name="categories" placeholder="choose" onChange={(e) => setCurrentExhibition(e.target.value)}>
-            <option value="" disabled selected>Your Exhibitions</option>
+          {user.id
+          ? <>Choose an exhibition to search for:
+          <select id="categories" 
+            defaultValue={'DEFAULT'} 
+            name="categories" 
+            placeholder="choose" 
+            onChange={(e) => handleSelect(e.target.value)}>
+            <option value="DEFAULT" disabled selected>Your Exhibitions</option>
             {exhibitionsOptions}
-          </select>
+          </select></> : null }
         </div>
       </div>
       <div className="search-return-div">

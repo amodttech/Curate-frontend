@@ -5,12 +5,14 @@ import '../../stylesheets/profile.css'
 import {useDispatch, useSelector} from 'react-redux'
 import { setId, setDisplayName, setBio, addExhibitions, setUsername } from '../../reducers/userSlice'
 import {isLoggedIn} from '../../actions'
+import {isLoggedOut} from '../../actions'
 
 function Profile() {
   let history = useHistory()
   // REDUX
   const dispatch = useDispatch()
   const user = useSelector((state) => state.user)
+  const loggedIn = useSelector((state) => state.loggedIn)
   //// ------------
   // USESTATES
   const [formUsername, setFormUsername] = useState(user.username)
@@ -19,6 +21,22 @@ function Profile() {
   const [formBio, setFormBio] = useState(user.bio)
   const [editTog, setEditTog] = useState(false)
   // HANDLERS
+  function handleDelete(e) {
+    e.preventDefault()
+    fetch(`http://localhost:3000/users/${user.id}`, {
+        method: "DELETE",
+    })
+    .then(() => {
+      dispatch(isLoggedOut())
+      dispatch(setId(null))
+      dispatch(setDisplayName(""))
+      dispatch(setBio(""))
+      dispatch(addExhibitions(""))
+      dispatch(setUsername(""))
+      history.push("/")
+    })
+  }
+
   function handleSubmit(e) {
     e.preventDefault()
     const formData = {
@@ -36,7 +54,6 @@ function Profile() {
     })
     .then((r) => r.json())
     .then((userObj) => {
-        console.log(userObj)
         dispatch(isLoggedIn())
         dispatch(setId(userObj.id))
         dispatch(setDisplayName(userObj.display_name))
@@ -78,16 +95,17 @@ function Profile() {
           <h3>NAME</h3>
         </div>
         <div className="profile-input">
-          <input type="text" id="username" value={formName} onChange={(e) => setFormName(e.target.value)} />
+          <input type="text" id="displayName" value={formName} onChange={(e) => setFormName(e.target.value)} />
         </div>
         <div className="profile-label">
           <h3>BIO</h3>
         </div>
         <div className="profile-input">
-          <input type="text" id="username" value={formBio} onChange={(e) => setFormBio(e.target.value)} />
+          <input type="text" id="bio" value={formBio} onChange={(e) => setFormBio(e.target.value)} />
         </div>
         <div className="profile-submit">
           <button type="submit">SUBMIT</button>
+          <button type="delete" className="profile-delete" onClick={handleDelete}>DELETE</button>
         </div>
       </form>
       </> : null}

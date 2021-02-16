@@ -2,14 +2,10 @@ import React from 'react';
 import "../../stylesheets/object-card.css"
 /// COMPONENTS
 import SaveObject from './SaveObject'
-/// REDUX IMPORTS
-import { useSelector} from 'react-redux'
 
-function ObjectCard({artObject, currentExhibition}) {
+function ObjectCard({artObject, currentExhibition, exhibitionSelected}) {
   const {objectID, objectURL, title, primaryImage, primaryImageSmall, artistDisplayName, objectDate, artistNationality} = artObject
-  // REDUX
-  const loggedIn = useSelector((state) => state.loggedIn)
-  //// ------------
+
   // Object Creators
   const artObjectSaveData = {
     met_id: objectID,
@@ -25,7 +21,7 @@ function ObjectCard({artObject, currentExhibition}) {
   return (
     <div className="object-card-container" style={{backgroundImage: `url(${primaryImageSmall})`}}>
       <div className="object-card-top-panel">
-        {loggedIn ? 
+        {exhibitionSelected ? 
           <SaveObject 
             artObjectSaveData={artObjectSaveData} 
             currentExhibition={currentExhibition}/> 

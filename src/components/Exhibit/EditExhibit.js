@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import '../../stylesheets/exhibit-edit.css'
 import EditObjectCard from './EditObjectCard'
 /// REDUX IMPORTS
-import { useSelector, useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import {addToExhibitions} from '../../actions'
 
 function EditExhibit({exhibitionObjects, exhibitionData}) {
@@ -12,10 +12,10 @@ function EditExhibit({exhibitionObjects, exhibitionData}) {
   const dispatch = useDispatch()
   //// ------------
   // USESTATES
-  const {id, name, description, theme} = exhibitionData
+  const {id, name, description} = exhibitionData
   const [formName, setFormName] = useState(name)
   const [showDescription, setShowDescription] = useState(description)
-  const [displayTheme, setDisplayTheme] = useState(theme)
+  // const [displayTheme, setDisplayTheme] = useState(theme)
 
   //// ------------
   // EVENT HANDLERS
@@ -24,7 +24,8 @@ function EditExhibit({exhibitionObjects, exhibitionData}) {
     const formData = {
       name: formName,
       description: showDescription,
-      theme: displayTheme
+      theme: null
+      // theme: displayTheme
     }
     fetch(`http://localhost:3000/exhibitions/${id}`, {
         method: "PATCH",
@@ -35,11 +36,19 @@ function EditExhibit({exhibitionObjects, exhibitionData}) {
     })
     .then((r) => r.json())
     .then((data) => {
-      console.log(data)
       dispatch(addToExhibitions(data))
       history.push(`/exhibitions/${id}`)
     })
-    
+  }
+
+  function handleDelete(e) {
+    e.preventDefault()
+    fetch(`http://localhost:3000/exhibitions/${id}`, {
+        method: "DELETE",
+    })
+    .then(() => {
+      history.push("/")
+    })
   }
   
 
@@ -51,28 +60,21 @@ function EditExhibit({exhibitionObjects, exhibitionData}) {
         <form className="exhibit-edit-form" onSubmit={handleSubmit}>
           <input type="text" id="name" value={formName} onChange={(e) => setFormName(e.target.value)} />
           <input type="text" id="description" value={showDescription} onChange={(e) => setShowDescription(e.target.value)} />
-          <select id="theme" value={displayTheme} onChange={(e) => setDisplayTheme(e.target.value)}>
+          {/* <select id="theme" value={displayTheme} onChange={(e) => setDisplayTheme(e.target.value)}>
               <option value="" disabled selected>Select a Theme</option>
               <option value="warm">Warm</option>
               <option value="dark">Dark</option>
               <option value="erratic">Erratic</option>
               <option value="sensible">Sensible</option>
-          </select>
-          <button type="submit">SUBMIT</button>
+          </select> */}
+          <button type="submit">UPDATE</button>
+          <button type="delete" className="exhibit-edit-delete" onClick={handleDelete}>DELETE EXHIBITION</button>
         </form>
         <div className="exhibit-edit-body">
           <ul className="exhibit-edit-ul">
             {exhibitionsComponents}
           </ul>
-    
-
-
         </div>
-
-
-
-
-
     </div>
   );
 }

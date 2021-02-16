@@ -34,7 +34,6 @@ function SignUp() {
     })
     .then((r) => r.json())
     .then((userObj) => {
-        console.log(userObj)
         dispatch(isLoggedIn())
         dispatch(setId(userObj.id))
         dispatch(setDisplayName(userObj.display_name))

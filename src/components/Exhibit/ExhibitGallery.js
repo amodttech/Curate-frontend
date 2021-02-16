@@ -17,7 +17,7 @@ function ExhibitGallery({exhibitionObjects}) {
     })
   }  
 
-  console.log('galleryReadyObjectArray', galleryReadyObjectArray)
+
   return (
       <div className="exhibit-gallery-carousel">
         <Carousel>
@@ -25,7 +25,8 @@ function ExhibitGallery({exhibitionObjects}) {
             <div className="exhibit-gallery-slide" key={item.id}>
 
               <div className="exhibit-gallery-slide-vitals">
-
+              <p className="exhibit-gallery-slide-link"><a href={`https://www.metmuseum.org/art/collection/search/${item.met_id}`} target="_blank" 
+            rel="noreferrer">↗️</a></p>
               <p className="exhibit-gallery-slide-title">{item.title}</p>
               <p className="exhibit-gallery-slide-artist">{item.artist}</p>
               <p className="exhibit-gallery-slide-date">{item.date}</p>
@@ -35,7 +36,7 @@ function ExhibitGallery({exhibitionObjects}) {
 
               </div>
               <div className="exhibit-gallery-slide-content">
-                {(item.description === "") 
+                {(item.description === (null || "")) 
                 ? <div className="exhibit-gallery-slide-nodescription">
                     <a href={item.image}><img src={item.image} alt={item.title}/></a>
                   </div>
@@ -59,30 +60,3 @@ function ExhibitGallery({exhibitionObjects}) {
 }
 
 export default ExhibitGallery;
-
-/*
-
-
-              <div>{item.title}</div>
-              {item.artist ? <div>{item.artist}</div> : null}
-              <div>{item.date}</div>
-
-              {(item.description === "") 
-              ? <img src={item.image} alt={item.title}/>
-              : <>
-              <div>
-                <div><img src={item.image} alt={item.title}/></div>
-                <div>{item.description}</div>
-              </div></>}
-              
-              
-
-              
-              
-
-
-
-
-
-
-*/
