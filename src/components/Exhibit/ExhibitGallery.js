@@ -47,7 +47,7 @@ function ExhibitGallery({exhibitionObjects}) {
                     <a href={item.image}><img className="description-image" src={item.image} alt={item.title}/></a>
                   </div>
                   <div className="slide-right">
-                    {item.description}
+                    <p className="description-p">{item.description}</p>
                   </div>
                 </div></>}
 

@@ -40,6 +40,7 @@ function NavBar() {
     dispatch(setBio(""))
     dispatch(addExhibitions(""))
     dispatch(setUsername(""))
+    history.push("/")
   }
   function handleSignup(){
     history.push("/signup")

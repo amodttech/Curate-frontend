@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 /// REDUX IMPORTS
 import { useSelector} from 'react-redux'
 
-function Exhibit() {
+function ExhibitMenu() {
     const history = useHistory();
     // REDUX
     const user = useSelector((state) => state.user)
@@ -46,4 +46,4 @@ function Exhibit() {
   );
 }
 
-export default Exhibit;
+export default ExhibitMenu;

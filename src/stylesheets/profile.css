@@ -16,32 +16,41 @@ h3 {
     margin: 0px;
 }
 .profile-user-details {
-
+    width: 40%;
+    padding-block: 20px;
+    margin: 0% auto;
+    background-color: #6c757dff;
+    box-shadow: 4px 4px #212529ff;
 }
 .profile-edit-button{
     display: inline;
-    padding: 5px;
+    margin-inline: 3px;
     width: fit-content;
     height: 30px;
     line-height: 30px;
-    background: linear-gradient(180deg, rgba(233,233,233,1) 61%, rgba(152,152,152,1) 94%);
-    font-size: medium;
-    
+    padding: 5px;
+    font-size: 1.3em;
+    transition: color .5s;
+    font-weight: 400;
 }
 .profile-edit-button:hover{
-    background: linear-gradient(180deg, rgba(233,233,233,1) 61%, rgba(152,152,152,1) 80%);
     cursor: pointer;
+    color: gold;
 }
 
 .profile-form{
-
+    width: 40%;
+    padding-block: 20px;
+    margin: 0% auto;
+    background-color: #6c757dff;
+    box-shadow: 4px 4px #212529ff;
 }
-.profile-label {
+/* .profile-label {
     margin: 0px;
-}
+} */
 
 .profile-input {
-    margin: 0px;
+    width: 80%;
 }
 .profile-submit {
     

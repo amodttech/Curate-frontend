@@ -69,44 +69,29 @@ function Profile() {
   //// ------------
   return (
     <div className="profile-container">
-      <h1>PROFILE</h1>
+      <h2>PROFILE</h2>
       <div className="profile-user-details">
         <h3>{user.username}</h3>
-        <h3>{user.display_name}</h3>
-        <h3>{user.bio}</h3>
+        {/* <h3>{user.display_name}</h3> */}
+        <p>{user.bio}</p>
         <div onClick={handleEditClick} className="profile-edit-button">EDIT USER DETAILS</div>
       </div>
       {editTog ? <> 
+      <p></p>
       <form className="profile-form" onSubmit={handleSubmit}>
-        <h2>EDIT PROFILE</h2>
-        <div className="profile-label">
+          <h2>EDIT PROFILE</h2>
           <h3>USERNAME</h3>
-        </div>
-        <div className="profile-input">
           <input type="text" id="username" value={formUsername} onChange={(e) => setFormUsername(e.target.value)} />
-        </div>
-        <div className="profile-label">
           <h3>PASSWORD</h3>
-        </div>
-        <div className="profile-input">
           <input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-        </div>
-        <div className="profile-label">
-          <h3>NAME</h3>
-        </div>
-        <div className="profile-input">
-          <input type="text" id="displayName" value={formName} onChange={(e) => setFormName(e.target.value)} />
-        </div>
-        <div className="profile-label">
+          {/* <h3>NAME</h3>
+          <input type="text" id="displayName" value={formName} onChange={(e) => setFormName(e.target.value)} /> */}
           <h3>BIO</h3>
-        </div>
-        <div className="profile-input">
           <input type="text" id="bio" value={formBio} onChange={(e) => setFormBio(e.target.value)} />
-        </div>
-        <div className="profile-submit">
-          <button type="submit">SUBMIT</button>
-          <button type="delete" className="profile-delete" onClick={handleDelete}>DELETE</button>
-        </div>
+          <div className="profile-submit">
+            <button type="submit">SUBMIT</button>
+            <button type="delete" className="profile-delete" onClick={handleDelete}>DELETE</button>
+          </div>
       </form>
       </> : null}
       
