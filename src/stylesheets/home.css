@@ -1,6 +1,8 @@
 .home-container {
+    margin-top: 20px;
     display: flex;
     flex-direction: column;
+    justify-content: center;
 }
 
 .home-exhibit-list {
@@ -8,4 +10,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     list-style-type: none;
+    margin: 0;
+    padding: 0;
+    justify-content: center;
 }

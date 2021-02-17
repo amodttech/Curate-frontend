@@ -1,19 +1,24 @@
 .search-container {
     display: grid;
     grid-template-columns: 1fr 3fr;
-    grid-gap: 20px;
+    /* grid-gap: 20px; */
 }
-input {
-    width: 200px;
-}
-select {
-
+.search-form {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
 }
 .search-not-found {
     text-align: center;
     color: red;
     font-size: 13px;
 
+}
+.search-submit {
+    width: fit-content;
+}
+.search-input {
+    /* width: 30%; */
 }
 .search-saerching {
     text-align: center;

@@ -64,11 +64,12 @@ function Search() {
   return (
     <div className="search-container">
       <div className="search-input-div">
-        <h1>Search</h1>
-        <form onSubmit={handleSubmit}>
+        <h2>Search</h2>
+        <form className="search-form" onSubmit={handleSubmit}>
           <label>Search for an Art</label>
           <input type="text" value={query} onChange={(e) => setQuery(e.target.value)}></input>
-          <button type="submit">SEARCH</button>
+          <p></p>
+          <button className="search-submit" type="submit">SEARCH</button>
         </form>
         {searching ? <p className="search-saerching">Searching...</p> : null}
         {notFound ? <p className="search-not-found">NO MATCHES</p> : null}

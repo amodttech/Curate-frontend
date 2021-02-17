@@ -42,24 +42,15 @@ function Login() {
 
   return (
     <div className="login-container">
-      <h1>LOGIN</h1>
+      <h2>LOGIN</h2>
+      <p></p>
       <form className="login-form" onSubmit={handleSubmit}>
-        <div className="login-label">
           <h3>USERNAME</h3>
-        </div>
-        <div className="login-input">
-          <input type="text" id="username" value={formUsername} onChange={(e) => setFormUsername(e.target.value)} />
-        </div>
-
-        <div className="login-label">
+          <input className="login-input" type="text" id="username" value={formUsername} onChange={(e) => setFormUsername(e.target.value)} />
           <h3>PASSWORD</h3>
-        </div>
-        <div className="login-input">
-          <input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-        </div>
-        <div className="login-submit">
+          <input className="login-input" type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+          <p></p>
           <button type="submit">SUBMIT</button>
-        </div>
       </form>
     </div>
   );

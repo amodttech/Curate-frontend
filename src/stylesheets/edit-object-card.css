@@ -47,8 +47,11 @@
 .edit-object-card-p {
 
 }
-.edit-object-card-form-button {
-
+button {
+    
+}
+.edit-object-card-delete {
+    color: red;
 }
 .saved {
     color: greenyellow;

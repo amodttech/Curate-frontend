@@ -3,7 +3,6 @@ import "../../stylesheets/edit-object-card.css"
 
 function EditObjectCard({exhibit}) {
  
-  console.log('exhibit', exhibit)
   const {artist, date, image, met_id, title} = exhibit.art_object
   const {id, order_number, description} = exhibit
 
@@ -30,7 +29,15 @@ function EditObjectCard({exhibit}) {
       // dispatch(addToExhibitions(data))
       // history.push(`/exhibitions/${id}`)
     })
-    
+  }
+  function handleDelete(e) {
+    e.preventDefault()
+    fetch(`http://localhost:3000/exhibition_objects/${id}`, {
+        method: "DELETE",
+    })
+    .then(() => {
+      
+    })
   }
 
   return (
@@ -56,7 +63,8 @@ function EditObjectCard({exhibit}) {
             type="text" 
             value={newOrderNumber} 
             onChange={(e)=>setNewOrderNumber(e.target.value)}/>
-            <button className="edit-object-card-form-button" type="submit">UPDATE</button>
+            <button type="submit">UPDATE</button>
+            <button type="delete" className="edit-object-card-delete" onClick={handleDelete}>REMOVE</button>
           {saved ? <p className="saved">object updated!</p> : null}
         </form>
       </div>

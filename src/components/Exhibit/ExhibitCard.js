@@ -9,9 +9,11 @@ function ExhibitCard({exhibit}) {
   return (
     <Link to={`/exhibitions/${id}`}>
       <div className="exhibit-card">
-        <h2>{name}</h2>
-        <p>{description}</p>
-        <img src={exhibition_objects[0].art_object.image} alt={name} />
+        <h3 className="card-name">{name}</h3>
+        <p className="card-description">{description}</p>
+        <div className="image-container">
+          <img className="card-image" src={exhibition_objects[0].art_object.image} alt={name} />
+        </div>
       </div>
     </Link>
   );

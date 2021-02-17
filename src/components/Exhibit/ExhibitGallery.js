@@ -38,13 +38,13 @@ function ExhibitGallery({exhibitionObjects}) {
               <div className="exhibit-gallery-slide-content">
                 {(item.description === (null || "")) 
                 ? <div className="exhibit-gallery-slide-nodescription">
-                    <a href={item.image}><img src={item.image} alt={item.title}/></a>
+                    <a href={item.image}><img className="nodescription-image" src={item.image} alt={item.title}/></a>
                   </div>
                 
                 : <>
                 <div className="exhibit-gallery-slide-withdescription">
                   <div className="slide-left">
-                    <a href={item.image}><img src={item.image} alt={item.title}/></a>
+                    <a href={item.image}><img className="description-image" src={item.image} alt={item.title}/></a>
                   </div>
                   <div className="slide-right">
                     {item.description}

@@ -6,10 +6,11 @@
 }
 .exhibit-menu-li {
     cursor: pointer;
+    transition: color .5s;
 }
 .exhibit-menu-li:hover {
     cursor: pointer;
-    padding-block: 3px;
+    color: gold;
     
 }
 .exhibit-menu-description {

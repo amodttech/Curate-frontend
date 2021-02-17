@@ -14,7 +14,7 @@ function SignUp() {
   // USESTATES
   const [formUsername, setFormUsername] = useState(null)
   const [password, setPassword] = useState(null)
-  const [formName, setFormName] = useState(null)
+  // const [formName, setFormName] = useState(null)
   const [formBio, setFormBio] = useState(null)
   // HANDLERS
   function handleSubmit(e) {
@@ -22,7 +22,7 @@ function SignUp() {
     const formData = {
         username: formUsername,
         password: password,
-        display_name: formName,
+        // display_name: formName,
         bio: formBio
     }
     fetch("http://localhost:3000/users", {
@@ -36,7 +36,7 @@ function SignUp() {
     .then((userObj) => {
         dispatch(isLoggedIn())
         dispatch(setId(userObj.id))
-        dispatch(setDisplayName(userObj.display_name))
+        // dispatch(setDisplayName(userObj.display_name))
         dispatch(setBio(userObj.bio))
         dispatch(addExhibitions(userObj.exhibitions))
         dispatch(setUsername(userObj.username))
@@ -46,35 +46,19 @@ function SignUp() {
   //// ------------
   return (
     <div className="signup-container">
-      <h1>CREATE NEW ACCOUNT</h1>
+      <h2>CREATE NEW ACCOUNT</h2>
+      <p></p>
       <form className="signup-form" onSubmit={handleSubmit}>
-        <div className="signup-label">
           <h3>USERNAME</h3>
-        </div>
-        <div className="signup-input">
-          <input type="text" id="username" value={formUsername} onChange={(e) => setFormUsername(e.target.value)} />
-        </div>
-        <div className="signup-label">
+          <input className="signup-input" type="text" id="username" value={formUsername} onChange={(e) => setFormUsername(e.target.value)} />
           <h3>PASSWORD</h3>
-        </div>
-        <div className="signup-input">
-          <input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-        </div>
-        <div className="signup-label">
-          <h3>NAME</h3>
-        </div>
-        <div className="signup-input">
-          <input type="text" id="username" value={formName} onChange={(e) => setFormName(e.target.value)} />
-        </div>
-        <div className="signup-label">
+          <input className="signup-input" type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+          {/* <h3>NAME</h3>
+          <input className="signup-input" type="text" id="username" value={formName} onChange={(e) => setFormName(e.target.value)} /> */}
           <h3>BIO</h3>
-        </div>
-        <div className="signup-input">
-          <input type="text" id="username" value={formBio} onChange={(e) => setFormBio(e.target.value)} />
-        </div>
-        <div className="signup-submit">
-          <button type="submit">SUBMIT</button>
-        </div>
+          <input className="signup-input" type="text" id="username" value={formBio} onChange={(e) => setFormBio(e.target.value)} />
+          <p></p>
+          <button type="submit" className="signup-submit">SUBMIT</button>
       </form>
     </div>
   );

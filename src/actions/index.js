@@ -27,6 +27,20 @@ export const addToExhibitions = (exhibitionObj) => {
     }
 }
 
+export const updateExhibitions = (exhibitionObj) => { 
+    return {
+        type: 'UPDATEEXHIBITIONS',
+        exhibition: exhibitionObj
+    }
+}
+
+export const removeFromExhibitions = (exhibitionId) => { 
+    return {
+        type: 'REMOVEFROMEXHIBITIONS',
+        exhibition: exhibitionId
+    }
+}
+
 // isLoggedIn.js
 export const isLoggedIn = () => {  
     return {

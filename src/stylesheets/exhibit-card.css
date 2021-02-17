@@ -1,16 +1,23 @@
 .exhibit-card {
-    margin: 5px;
-    width: 200px;
-    height: fit-content;
-    background-color: #495057ff;
-    
+    margin: 10px;
+    width: 400px;
+    height: 400px;
+    overflow: hidden;
+    background-color: #6c757dff;
+    box-shadow: 4px 4px #212529ff;
 }
-
-p {
+.image-container {
 
 }
+.card-image {
+    text-align: center;
+    max-width: 100%;
+    max-height: 160%;
 
-img {
-    max-height: 200px;
-    max-width: 100px;
+}
+.card-name {
+    text-align: center;
+}
+.card-description {
+    text-align: center;
 }

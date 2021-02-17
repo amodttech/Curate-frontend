@@ -4,9 +4,11 @@ import '../../stylesheets/exhibit-edit.css'
 import EditObjectCard from './EditObjectCard'
 /// REDUX IMPORTS
 import { useDispatch } from 'react-redux'
+import {updateExhibitions} from '../../actions'
+import {removeFromExhibitions} from '../../actions'
 import {addToExhibitions} from '../../actions'
 
-function EditExhibit({exhibitionObjects, exhibitionData}) {
+function EditExhibit({exhibitionObjects, exhibitionData, setExhibitionData}) {
   let history = useHistory()
   // REDUX
   const dispatch = useDispatch()
@@ -36,7 +38,8 @@ function EditExhibit({exhibitionObjects, exhibitionData}) {
     })
     .then((r) => r.json())
     .then((data) => {
-      dispatch(addToExhibitions(data))
+      dispatch(updateExhibitions(data))
+      setExhibitionData(data)
       history.push(`/exhibitions/${id}`)
     })
   }
@@ -47,6 +50,7 @@ function EditExhibit({exhibitionObjects, exhibitionData}) {
         method: "DELETE",
     })
     .then(() => {
+      dispatch(removeFromExhibitions(id))
       history.push("/")
     })
   }

@@ -36,9 +36,8 @@ function Home() {
 
   return (
     <div className="home-container">
-      <h1>Welcome Home {user ? user.display_name : ""}</h1>
+      <h3> {user.id ? `Welcome Home, ${user.display_name}` : ""}</h3>
       <p></p>
-      <p>If you were going to curate a show using art from throughout all art history, what would the theme be?</p>
       {exhibitionsListFromStore ? 
       <ul className="home-exhibit-list">{exhibitionsComponents}</ul> : 
       null}

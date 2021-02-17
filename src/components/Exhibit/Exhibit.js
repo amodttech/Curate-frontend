@@ -23,10 +23,18 @@ function Exhibit() {
   const [exhibitionObjects, setExhibitionObjects] = useState([])
   const [exhibitionData, setExhibitionData] = useState({})
   //// ------------
-  // DESTRUCTURE
-  const {id, name, description, theme} = exhibitionData
-  //// ------------
   // HELPER FUNCTIONS
+  useEffect(() => {
+    if (exhibitListSize > 0){   ///  If getting list from state, return only the exhibition that matches path ID
+      const thisExhibitFromState = exhibitionsListFromStore.filter(exhibit => exhibit.id === parseInt(currentId))
+      setExhibitionObjects(thisExhibitFromState[0].exhibition_objects)
+      setExhibitionData(thisExhibitFromState[0])
+      setUserId(thisExhibitFromState[0].user_id)
+    } else {
+      getExhibition()
+    }
+  }, [userId])
+
   function getExhibition(){
     fetch(`http://localhost:3000${location.pathname}`)
       .then((r) => r.json())
@@ -36,17 +44,6 @@ function Exhibit() {
         setUserId(data.user_id)
       })
   }
-  useEffect(() => {
-    if (exhibitListSize > 0){
-      const thisExhibitFromState = exhibitionsListFromStore.filter(object => object.id === parseInt(currentId))
-      setExhibitionObjects(thisExhibitFromState[0].exhibition_objects)
-      setExhibitionData(thisExhibitFromState[0])
-      setUserId(thisExhibitFromState[0].user_id)
-    } else {
-      getExhibition()
-    }
-  }, [userId])
-
   //// ------------
   // EVENT HANDLERS
   function setGallery(){
@@ -58,36 +55,49 @@ function Exhibit() {
   function setEditView(){
     setDisplayType("edit")
   }
-  // function handleDelete(){
-  //   fetch(`http://localhost:3000/exhibitions/${id}`, {
-  //       method: "Delete"
-  //   })
-  //   history.push("/")
-  // }
-  // function handleEdit(){
-  //   setEditToggle(!editToggle)
-  // }
-  //// ------------
 
+  // DESTRUCTURE   //  Must be placed here, after the useEffect
+  const {id, name, description, theme} = exhibitionData
+  //// ------------
 
   return (
     <div className="exhibit-container">
       <div className="exhibit-controller">
         {(user.id === userId)? 
-        <div onClick={setEditView} className={(displayType === "edit") ? "exhibit-controller-button-current" : "exhibit-controller-button"}>EDIT VIEW</div> : null }
+        <>
+        <div onClick={setEditView} 
+          className={
+            (displayType === "edit") 
+            ? "exhibit-controller-button-current" 
+            : "exhibit-controller-button"}>
+            EDIT VIEW</div> 
+        <div onClick={setGallery} 
+          className={
+            (displayType === "gallery") 
+            ? "exhibit-controller-button-current" 
+            : "exhibit-controller-button"}>
+            GALLERY VIEW</div></>
 
-
-        <div onClick={setGallery} className={(displayType === "gallery") ? "exhibit-controller-button-current" : "exhibit-controller-button"}>GALLERY VIEW</div>
+            : null }
         {/* <div onClick={setTimeline} className={(displayType === "timeline") ? "exhibit-controller-button-current" : "exhibit-controller-button"}>TIMELINE VIEW</div> */}
         {/* <div onClick={handleDelete} className="exhibit-controller-button">DELETE</div> */}
       </div>
       <div className="exhibit-title">
-        <p className="exhibit-title-title">{name}</p>
-        <p className="exhibit-title-description">{description}</p>
+        <h2>{name}</h2>
+        <p>{description}</p>
       </div>
       <div className="exhibit-display-container">
-        {(displayType === "edit") ? <EditExhibit exhibitionObjects={exhibitionObjects} exhibitionData={exhibitionData}/> : null}
-        {(displayType === "gallery") ? <ExhibitGallery exhibitionObjects={exhibitionObjects} theme={theme}/>  : null}
+        {(displayType === "edit") 
+          ? <EditExhibit 
+              exhibitionObjects={exhibitionObjects} 
+              exhibitionData={exhibitionData} 
+              setExhibitionData={setExhibitionData}/> 
+              : null}
+        {(displayType === "gallery") 
+          ? <ExhibitGallery 
+              exhibitionObjects={exhibitionObjects} 
+              theme={theme}/>  
+              : null}
         {/* {(displayType === "timeline") ? <ExhibitTimeline exhibitionObjects={exhibitionObjects} theme={theme}/> : null} */}
       </div>
     </div>

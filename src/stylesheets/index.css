@@ -1,4 +1,4 @@
-/* * { border: 1px solid black; } */
+/* * { border: 1px dashed black; } */
 
 /* greyscale color palette */
 
@@ -13,48 +13,57 @@
 --gunmetal: #343a40ff;
 --charleston-green: #212529ff; */
 
-
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;900&display=swap');
 
 body {
-  font-family: Arial, Helvetica, sans-serif; 
+  font-family: 'Montserrat', sans-serif;
   background-color: #adb5bdff;
   color: #f8f9faff;
   text-shadow: 1px 1px 4px black;
-  font-weight: 12px;
 }
 a:link {
   color: #f8f9faff;
   text-shadow: 1px 1px 4px black;
-  font-weight: 12px;
   text-decoration: none;
+  
 
 }
 a:visited {
   color: #f8f9faff;
   text-shadow: 1px 1px 4px black;
-  font-weight: 12px;
 }
 a:active {
   color: #f8f9faff;
   text-shadow: 1px 1px 4px black;
-  font-weight: 12px;
 }
 a:hover {
   color: #f8f9faff;
   text-shadow: 1px 1px 4px black;
-  font-weight: 14px;
 }
 h1 {
-  font-size: 34px;
+  font-size: 3em;
   letter-spacing: 5px;
+  margin: 0px;
 }
+
 h2 {
-  font-size: 25px;
+  font-size: 2em;
   letter-spacing: 3px;
+  margin: 0px;
 }
 h3 {
-  font-size: 20px;
+  font-size: 1.5em;
   letter-spacing: 2px;
+  margin: 0px;
+}
+p {
+  font-size: 1em;
+  font-weight: 500;
+}
+input {
+  /* width: 200px; */
+  /* margin: 20px; */
+  color: blue;
 }
 
 .tip-top-div{
