@@ -14,36 +14,53 @@ function Exhibit() {
   const currentId = location.pathname.split('/')[2]
   // REDUX
   const user = useSelector((state) => state.user)
-  const exhibitionsListFromStore = Object.values(useSelector((state) => state.exhibitions))
-  const exhibitListSize = Object.keys(exhibitionsListFromStore).length
+  const thisExhibitFromState = Object.values(useSelector((state) => state.exhibitions[currentId-1]))
+  const thisExhibitObjects = Object.values(useSelector((state) => state.exhibitions[currentId-1].exhibition_objects))
+
+  console.log('thisExhibitFromState', thisExhibitFromState)
+  console.log('thisExhibitObjects', thisExhibitObjects)
+
+
+  const name = thisExhibitFromState[2]
+  const description = thisExhibitFromState[3]
+  const userId = thisExhibitFromState[1]
+  const theme = null
+
+
   //// ------------
   // USESTATES
   const [displayType, setDisplayType] = useState("gallery")
-  const [userId, setUserId] = useState(null)
-  const [exhibitionObjects, setExhibitionObjects] = useState([])
-  const [exhibitionData, setExhibitionData] = useState({})
+  // const [userId, setUserId] = useState(null)
+  // const [exhibitionObjects, setExhibitionObjects] = useState([])
+  // const [exhibitionData, setExhibitionData] = useState({})
   //// ------------
-  // HELPER FUNCTIONS
-  useEffect(() => {
-    if (exhibitListSize > 0){   ///  If getting list from state, return only the exhibition that matches path ID
-      const thisExhibitFromState = exhibitionsListFromStore.filter(exhibit => exhibit.id === parseInt(currentId))
-      setExhibitionObjects(thisExhibitFromState[0].exhibition_objects)
-      setExhibitionData(thisExhibitFromState[0])
-      setUserId(thisExhibitFromState[0].user_id)
-    } else {
-      getExhibition()
-    }
-  }, [userId])
 
-  function getExhibition(){
-    fetch(`http://localhost:3000${location.pathname}`)
-      .then((r) => r.json())
-      .then((data) => {
-        setExhibitionData(data)
-        setExhibitionObjects(data.exhibition_objects)
-        setUserId(data.user_id)
-      })
-  }
+  
+
+
+
+
+  // // HELPER FUNCTIONS
+  // useEffect(() => {
+  //   if (exhibitListSize > 0){   ///  If getting list from state, return only the exhibition that matches path ID
+  //     const thisExhibitFromState = exhibitionsListFromStore.filter(exhibit => exhibit.id === parseInt(currentId))
+  //     setExhibitionObjects(thisExhibitFromState[0].exhibition_objects)
+  //     setExhibitionData(thisExhibitFromState[0])
+  //     setUserId(thisExhibitFromState[0].user_id)
+  //   } else {
+  //     getExhibition()
+  //   }
+  // }, [userId])
+
+  // function getExhibition(){
+  //   fetch(`http://localhost:3000${location.pathname}`)
+  //     .then((r) => r.json())
+  //     .then((data) => {
+  //       setExhibitionData(data)
+  //       setExhibitionObjects(data.exhibition_objects)
+  //       setUserId(data.user_id)
+  //     })
+  // }
   //// ------------
   // EVENT HANDLERS
   function setGallery(){
@@ -57,7 +74,7 @@ function Exhibit() {
   }
 
   // DESTRUCTURE   //  Must be placed here, after the useEffect
-  const {name, description, theme} = exhibitionData
+  // const {name, description, theme} = exhibitionData
   //// ------------
 
   return (
@@ -88,14 +105,12 @@ function Exhibit() {
       <div className="exhibit-display-container">
         {(displayType === "edit") 
           ? <EditExhibit 
-              exhibitionObjects={exhibitionObjects} 
-              exhibitionData={exhibitionData} 
-              setExhibitionData={setExhibitionData}/> 
+              exhibitionObjects={thisExhibitObjects} 
+              exhibitionData={thisExhibitFromState} /> 
               : null}
         {(displayType === "gallery") 
           ? <ExhibitGallery 
-              exhibitionObjects={exhibitionObjects} 
-              theme={theme}/>  
+              exhibitionObjects={thisExhibitObjects} />  
               : null}
         {/* {(displayType === "timeline") ? <ExhibitTimeline exhibitionObjects={exhibitionObjects} theme={theme}/> : null} */}
       </div>

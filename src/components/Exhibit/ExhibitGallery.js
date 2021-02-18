@@ -4,6 +4,7 @@ import Carousel from 'react-elastic-carousel'
 
 
 function ExhibitGallery({exhibitionObjects}) {
+  console.log('exhibitionObjects (in gallery, from props)', exhibitionObjects)
   // PROPS
   let galleryReadyObjectArray = []
   let presortedObjectsList = []

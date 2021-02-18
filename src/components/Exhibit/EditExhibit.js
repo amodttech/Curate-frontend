@@ -7,13 +7,21 @@ import { useDispatch } from 'react-redux'
 import {updateExhibitions} from '../../actions'
 import {removeFromExhibitions} from '../../actions'
 
-function EditExhibit({exhibitionObjects, exhibitionData, setExhibitionData}) {
+function EditExhibit({exhibitionObjects, exhibitionData}) {
   let history = useHistory()
   // REDUX
   const dispatch = useDispatch()
   //// ------------
   // USESTATES
-  const {id, name, description} = exhibitionData
+  // const {id, name, description} = exhibitionData
+
+  console.log('exhibitionData (in exhibit edit)', exhibitionData)
+  const id = exhibitionData[0]
+  // const userId = exhibitionData[1]
+  const name = exhibitionData[2]
+  const description = exhibitionData[3]
+
+
   const [formName, setFormName] = useState(name)
   const [showDescription, setShowDescription] = useState(description)
   // const [displayTheme, setDisplayTheme] = useState(theme)
@@ -37,7 +45,7 @@ function EditExhibit({exhibitionObjects, exhibitionData, setExhibitionData}) {
     .then((r) => r.json())
     .then((data) => {
       dispatch(updateExhibitions(data))
-      setExhibitionData(data)
+      // setExhibitionData(data)
       history.push(`/exhibitions/${id}`)
     })
   }
