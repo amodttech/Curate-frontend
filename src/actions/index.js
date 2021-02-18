@@ -41,6 +41,27 @@ export const removeFromExhibitions = (exhibitionId) => {
     }
 }
 
+export const addExhibitionObject = (exhibitionObject) => { 
+    return {
+        type: 'ADDEXHIBITIONOBJECT',
+        exhibitionObject: exhibitionObject
+    }
+}
+
+export const updateExhibitionObject = (exhibitionObject) => { 
+    return {
+        type: 'UPDATEEXHIBITIONOBJECT',
+        exhibitionObject: exhibitionObject
+    }
+}
+export const removeExhibitionObject = (id) => { 
+    return {
+        type: 'REMOVEEXHIBITIONOBJECT',
+        exhibitionObject: id
+    }
+}
+
+
 // isLoggedIn.js
 export const isLoggedIn = () => {  
     return {

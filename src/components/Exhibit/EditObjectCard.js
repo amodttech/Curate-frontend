@@ -1,10 +1,16 @@
 import React, {useState} from 'react';
 import "../../stylesheets/edit-object-card.css"
+/// REDUX IMPORTS
+import { useDispatch } from 'react-redux'
+import {updateExhibitionObject} from "../../actions"
+import {removeExhibitionObject} from "../../actions"
 
-function EditObjectCard({exhibit}) {
+function EditObjectCard({exhibit, exhibitId}) {
  
   const {artist, date, image, met_id, title} = exhibit.art_object
   const {id, order_number, description} = exhibit
+  // REDUX
+  const dispatch = useDispatch()
 
   const [newDescription, setNewDescription] = useState(description)
   const [newOrderNumber, setNewOrderNumber] = useState(order_number)
@@ -24,19 +30,19 @@ function EditObjectCard({exhibit}) {
         body: JSON.stringify(updatedObject),
     })
     .then((r) => r.json())
-    .then((data) => {
+    .then((updatedObject) => {
       setSaved(true)
-      // dispatch(addToExhibitions(data))
-      // history.push(`/exhibitions/${id}`)
+      dispatch(updateExhibitionObject(updatedObject))
     })
   }
   function handleDelete(e) {
+    const reduxObj = {exhibitId: exhibitId, objectId: id}
     e.preventDefault()
     fetch(`http://localhost:3000/exhibition_objects/${id}`, {
         method: "DELETE",
     })
     .then(() => {
-      
+      dispatch(removeExhibitionObject(reduxObj))
     })
   }
 
@@ -68,12 +74,12 @@ function EditObjectCard({exhibit}) {
           {saved ? <p className="saved">object updated!</p> : null}
         </form>
       </div>
-      <div className="edit-object-card-bottom-panel" >
+      {/* <div className="edit-object-card-bottom-panel" >
         <a className="met-link" 
             href={`https://www.metmuseum.org/art/collection/search/${met_id}`} 
             target="_blank" 
             rel="noreferrer">Click to see on https://www.metmuseum.org/</a>
-      </div>
+      </div> */}
       
     </div>
   );

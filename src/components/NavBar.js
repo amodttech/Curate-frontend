@@ -57,7 +57,7 @@ function NavBar() {
         <div className="nav-title" onClick={handleHome}>CURATE</div>
         <div className="nav-button" onClick={handleSearch}>SEARCH</div>
         {loggedIn  ? <>
-          <div className="nav-button" onClick={handleExhibition}>YOUR EXHIBITIONS</div>
+          {/* <div className="nav-button" onClick={handleExhibition}>YOUR EXHIBITIONS</div> */}
           <div className="nav-button" onClick={handleNewExhibition}>NEW EXHIBITION</div>
           <div className="nav-button" onClick={handleProfile}>PROFILE</div>
           <div className="nav-button" onClick={handleLogout}>LOGOUT</div>

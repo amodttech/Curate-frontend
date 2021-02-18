@@ -64,27 +64,29 @@ function Search() {
   return (
     <div className="search-container">
       <div className="search-input-div">
-        <h2>Search</h2>
         <form className="search-form" onSubmit={handleSubmit}>
+          <h2>Search</h2>
           <label>Search for an Art</label>
-          <input type="text" value={query} onChange={(e) => setQuery(e.target.value)}></input>
+          <input className="search-input" type="text" value={query} onChange={(e) => setQuery(e.target.value)}></input>
           <p></p>
-          <button className="search-submit" type="submit">SEARCH</button>
+          <button type="submit">SEARCH</button>
+          {searching ? <p className="search-saerching">Searching...</p> : <p className="search-saerching"></p>}
+          {notFound ? <p className="search-not-found">NO MATCHES</p> : <p className="search-not-found"></p>}
+
+          <div className="search-exhibit-menu-container">
+            {user.id
+            ? <>
+            <p>Choose an exhibition to save items to:</p>
+            <select id="categories" 
+              defaultValue={'DEFAULT'} 
+              name="categories" 
+              placeholder="choose" 
+              onChange={(e) => handleSelect(e.target.value)}>
+              <option value="DEFAULT" disabled selected>Your Exhibitions</option>
+              {exhibitionsOptions}
+            </select></> : null }
+          </div>
         </form>
-        {searching ? <p className="search-saerching">Searching...</p> : null}
-        {notFound ? <p className="search-not-found">NO MATCHES</p> : null}
-        <div className="search-exhibit-menu-container">
-          {user.id
-          ? <>Choose an exhibition to search for:
-          <select id="categories" 
-            defaultValue={'DEFAULT'} 
-            name="categories" 
-            placeholder="choose" 
-            onChange={(e) => handleSelect(e.target.value)}>
-            <option value="DEFAULT" disabled selected>Your Exhibitions</option>
-            {exhibitionsOptions}
-          </select></> : null }
-        </div>
       </div>
       <div className="search-return-div">
         <ul className="search-return-list">

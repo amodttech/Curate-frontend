@@ -1,12 +1,12 @@
 .edit-object-card-container {
     border: 1px solid black;
-    margin: 5px;
+    margin: 30px;
     width: 300px;
-    height: 525px;
+    height: fit-content;
     
 }
 .edit-object-card-top-panel {
-    border: 1px solid yellow;
+    /* border: 1px solid yellow; */
     height: 300px;
     background-position: center;
     background-size: cover;
@@ -25,7 +25,7 @@
     font-size: 12px;
 }
 .edit-object-card-middle-panel {
-    border: 1px solid red;
+    /* border: 1px solid red; */
    height: 200px;
 }
 .edit-object-card-form {
@@ -47,9 +47,6 @@
 .edit-object-card-p {
 
 }
-button {
-    
-}
 .edit-object-card-delete {
     color: red;
 }
@@ -57,7 +54,7 @@ button {
     color: greenyellow;
 }
 .edit-object-card-bottom-panel {
-    border: 1px solid purple;
+    /* border: 1px solid purple; */
     height: 25px;
 text-align: center;
 }
@@ -65,7 +62,7 @@ text-align: center;
     
     background-color: rgba(255, 156, 21, 0.2) ;
     font-size: 12px;
-    height: 100%;
+    /* height: 100%; */
 }
 
 

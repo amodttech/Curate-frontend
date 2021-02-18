@@ -1,12 +1,16 @@
 import React, {useState} from 'react';
 import '../../stylesheets/save-object.css'
 /// REDUX IMPORTS
+import { useDispatch } from 'react-redux'
+import {addExhibitionObject} from '../../actions'
 
 
 function SaveObject({artObjectSaveData, currentExhibition}) {
   // USESTATES
   const [saved, setSaved] = useState(false)
   //// ------------
+  // REDUX
+  const dispatch = useDispatch()
   // EVENT HANDLERS
 
   
@@ -43,7 +47,9 @@ function SaveObject({artObjectSaveData, currentExhibition}) {
       },
       body: JSON.stringify(exhibitionObjectSaveData),
     })
-    return await response.json()
+    const objectResponse = await response.json()
+    dispatch(addExhibitionObject(objectResponse))
+    return objectResponse
   }
 
 

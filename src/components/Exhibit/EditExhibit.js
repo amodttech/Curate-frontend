@@ -6,7 +6,6 @@ import EditObjectCard from './EditObjectCard'
 import { useDispatch } from 'react-redux'
 import {updateExhibitions} from '../../actions'
 import {removeFromExhibitions} from '../../actions'
-import {addToExhibitions} from '../../actions'
 
 function EditExhibit({exhibitionObjects, exhibitionData, setExhibitionData}) {
   let history = useHistory()
@@ -57,7 +56,7 @@ function EditExhibit({exhibitionObjects, exhibitionData, setExhibitionData}) {
   
 
   const exhibitionsComponents = exhibitionObjects.map(exhibit => 
-    <EditObjectCard key={exhibit.id} exhibit={exhibit}/>)
+    <EditObjectCard key={exhibit.id} exhibit={exhibit} exhibitId={id}/>)
 
   return (
     <div className="exhibit-edit-container">
