@@ -6,16 +6,19 @@ import {updateExhibitionObject} from "../../actions"
 import {removeExhibitionObject} from "../../actions"
 
 function EditObjectCard({exhibit, exhibitId}) {
- 
-  const {artist, date, image, met_id, title} = exhibit.art_object
+  // PROPS
+  const {artist, date, image, title} = exhibit.art_object
   const {id, order_number, description} = exhibit
+  ///-----
   // REDUX
   const dispatch = useDispatch()
-
+  ///-----
+  // USESTATES
   const [newDescription, setNewDescription] = useState(description)
   const [newOrderNumber, setNewOrderNumber] = useState(order_number)
   const [saved, setSaved] = useState(false)
-
+  ///-----
+  // EVENT HANDLERS
   function handleSubmit(event){
     event.preventDefault()
     const updatedObject = {
@@ -45,6 +48,7 @@ function EditObjectCard({exhibit, exhibitId}) {
       dispatch(removeExhibitionObject(reduxObj))
     })
   }
+  ///-----
 
   return (
     <div className="edit-object-card-container" >
@@ -64,14 +68,17 @@ function EditObjectCard({exhibit, exhibitId}) {
             value={newDescription}
             onChange={(e)=>setNewDescription(e.target.value)}/>
           <p className="edit-object-card-p">Set the order you would like this object to appear in the gallery:</p>
-          <input className="edit-object-card-order-number-input" 
+          <input  className="edit-object-card-order-number-input"
             name="order-number" 
             type="text" 
             value={newOrderNumber} 
             onChange={(e)=>setNewOrderNumber(e.target.value)}/>
-            <button type="submit">UPDATE</button>
-            <button type="delete" className="edit-object-card-delete" onClick={handleDelete}>REMOVE</button>
-          {saved ? <p className="saved">object updated!</p> : null}
+            <p className="empty"></p>
+            <div className="button-zone">
+              <button type="submit">UPDATE</button>
+              <button type="delete" className="edit-object-card-delete" onClick={handleDelete}>REMOVE</button>
+              {saved ? <p className="saved">OBJECT UPDATED!</p> : null}
+            </div>
         </form>
       </div>
       {/* <div className="edit-object-card-bottom-panel" >

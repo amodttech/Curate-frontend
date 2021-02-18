@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {useLocation, useHistory} from "react-router-dom";
+import {useLocation} from "react-router-dom";
 import '../../stylesheets/exhibit.css'
 /// REDUX IMPORTS
 import { useSelector} from 'react-redux'
@@ -9,7 +9,7 @@ import ExhibitGallery from './ExhibitGallery'
 import EditExhibit from './EditExhibit';
 
 function Exhibit() {
-  let history = useHistory()
+
   const location = useLocation();
   const currentId = location.pathname.split('/')[2]
   // REDUX
@@ -57,7 +57,7 @@ function Exhibit() {
   }
 
   // DESTRUCTURE   //  Must be placed here, after the useEffect
-  const {id, name, description, theme} = exhibitionData
+  const {name, description, theme} = exhibitionData
   //// ------------
 
   return (
@@ -77,7 +77,6 @@ function Exhibit() {
             ? "exhibit-controller-button-current" 
             : "exhibit-controller-button"}>
             GALLERY VIEW</div></>
-
             : null }
         {/* <div onClick={setTimeline} className={(displayType === "timeline") ? "exhibit-controller-button-current" : "exhibit-controller-button"}>TIMELINE VIEW</div> */}
         {/* <div onClick={handleDelete} className="exhibit-controller-button">DELETE</div> */}

@@ -14,18 +14,27 @@
 }
 .exhibit-gallery-slide-link {
     float: right;
-    padding-right: 5px;
-}
-.exhibit-gallery-slide-artist {
-
-}
-.exhibit-gallery-slide-date {
-
+    padding: 5px;
+    line-height: 3px;
+    opacity: 50%;
 }
 .exhibit-gallery-slide-title {
-    font-size: 170%;
+    font-size: 2em;
+    font-weight: 600;
+    letter-spacing: 3px;
+    margin-block: 0px;;
     overflow: visible;
 }
+.exhibit-gallery-slide-artist {
+    margin-block: 2px;;
+}
+.exhibit-gallery-slide-date {
+    margin-block: 2px;;
+}
+.exhibit-gallery-slide-origin {
+    margin-block: 2px;;
+}
+
 
 .exhibit-gallery-slide-content {
     /* border: 1px solid red; */
@@ -63,7 +72,9 @@
 }
 .description-p {
     margin-top: 0%;
-    margin-left: 10px;
+    margin-left: 15px;
+    font-size: 1.2em;
+    text-align: left;
     
 }
 

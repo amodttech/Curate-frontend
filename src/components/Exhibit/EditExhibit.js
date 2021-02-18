@@ -17,7 +17,6 @@ function EditExhibit({exhibitionObjects, exhibitionData, setExhibitionData}) {
   const [formName, setFormName] = useState(name)
   const [showDescription, setShowDescription] = useState(description)
   // const [displayTheme, setDisplayTheme] = useState(theme)
-
   //// ------------
   // EVENT HANDLERS
   function handleSubmit(event){
@@ -61,8 +60,8 @@ function EditExhibit({exhibitionObjects, exhibitionData, setExhibitionData}) {
   return (
     <div className="exhibit-edit-container">
         <form className="exhibit-edit-form" onSubmit={handleSubmit}>
-          <input type="text" id="name" value={formName} onChange={(e) => setFormName(e.target.value)} />
-          <input type="text" id="description" value={showDescription} onChange={(e) => setShowDescription(e.target.value)} />
+          <input type="text" id="name" placeholder="Exhibition Name" value={formName} onChange={(e) => setFormName(e.target.value)} />
+          <input type="text" id="description" placeholder="Write a Description" value={showDescription} onChange={(e) => setShowDescription(e.target.value)} />
           {/* <select id="theme" value={displayTheme} onChange={(e) => setDisplayTheme(e.target.value)}>
               <option value="" disabled selected>Select a Theme</option>
               <option value="warm">Warm</option>

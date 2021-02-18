@@ -27,7 +27,7 @@ function ObjectCard({artObject, currentExhibition, exhibitionSelected}) {
             currentExhibition={currentExhibition}/> 
             : null}
         <div className="object-card-title">
-          {title}
+          <p className="title-text">{title}</p>
         </div>
         <div className="object-card-details">
           <div className="object-card-artist">ARTIST: {artistDisplayName}</div>

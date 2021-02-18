@@ -1,4 +1,4 @@
-/* * { border: 1px dashed black; } */
+/* * { border: 0.5px solid black; } */
 
 /* greyscale color palette */
 
@@ -63,7 +63,38 @@ p {
 input {
   /* width: 200px; */
   /* margin: 20px; */
-  color: blue;
+  background-color: #ced4daff;
+  color: #212529ff;
+  font-weight: 700;
+  box-shadow: 2px 2px #212529ff;
+}
+
+textarea {
+  background-color: #ced4daff;
+  color: #212529ff;
+  font-weight: 700;
+  box-shadow: 2px 2px #212529ff;
+}
+
+button {
+  background-color: #ced4daff;
+  color: #212529ff;
+  font-weight: 700;
+  box-shadow: 2px 2px #212529ff;
+  transition: background-color .5s;
+}
+
+button:hover {
+  background-color: gold;
+}
+
+select {
+  background-color: #ced4daff;
+  color: #212529ff;
+  width: 90%;
+  padding: 3px;
+  font-weight: 700;
+  box-shadow: 2px 2px #212529ff;
 }
 
 .tip-top-div{

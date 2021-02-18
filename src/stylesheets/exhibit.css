@@ -39,6 +39,7 @@
     padding-right: 20%;
     width: fit-content;
     max-width: 60%;
+    min-width: 10%;
     height: fit-content;
     background-color: #6c757dff;
     box-shadow: 4px 4px #212529ff;

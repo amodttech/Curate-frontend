@@ -16,6 +16,7 @@ function Search() {
   const [notFound, setNotFound] = useState(false)
   const [currentExhibition, setCurrentExhibition] = useState(null)
   const [exhibitionSelected, setExhibitionSelected] = useState(false)
+  const [showButton, setShowButton] = useState(false)
   // HANDLERS
   function handleSubmit(event){
     event.preventDefault()
@@ -26,7 +27,7 @@ function Search() {
   // FETCH
   async function fetchIds(){
     try {
-      const response = await fetch(`https://collectionapi.metmuseum.org/public/collection/v1/search?hasImages=true&title=true&q=${query}`)
+      const response = await fetch(`https://collectionapi.metmuseum.org/public/collection/v1/search?hasImages=true&q=${query}`)
       const artObjectIds = await response.json()
       const {objectIDs} = artObjectIds
       const artObjs = await Promise.all(objectIDs.map(async id => {
@@ -35,6 +36,7 @@ function Search() {
     }))
       setArtObjects(artObjs)
       setSearching(false)
+      setShowButton(true)
     } catch {
       setNotFound(true);
       setSearching(false)
@@ -58,6 +60,10 @@ function Search() {
   function handleSelect(event){
     setExhibitionSelected(true)
     setCurrentExhibition(event)
+  }
+
+  function backToTop(){
+    document.documentElement.scrollTop = 0;
   }
 
 
@@ -92,6 +98,7 @@ function Search() {
         <ul className="search-return-list">
           {artObjectComponents}
         </ul>
+        {showButton ? <button className="to-top" onClick={backToTop}>BACK TO TOP</button> : null }
       </div>
     </div>
   );

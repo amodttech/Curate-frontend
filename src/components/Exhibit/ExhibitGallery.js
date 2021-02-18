@@ -4,6 +4,7 @@ import Carousel from 'react-elastic-carousel'
 
 
 function ExhibitGallery({exhibitionObjects}) {
+  // PROPS
   let galleryReadyObjectArray = []
   let presortedObjectsList = []
   if (exhibitionObjects) {
@@ -16,7 +17,7 @@ function ExhibitGallery({exhibitionObjects}) {
       return a.order_number - b.order_number
     })
   }  
-
+  ///-----
 
   return (
       <div className="exhibit-gallery-carousel">
@@ -25,33 +26,28 @@ function ExhibitGallery({exhibitionObjects}) {
             <div className="exhibit-gallery-slide" key={item.id}>
 
               <div className="exhibit-gallery-slide-vitals">
-              <p className="exhibit-gallery-slide-link"><a href={`https://www.metmuseum.org/art/collection/search/${item.met_id}`} target="_blank" 
-            rel="noreferrer">↗️</a></p>
-              <p className="exhibit-gallery-slide-title">{item.title}</p>
-              <p className="exhibit-gallery-slide-artist">{item.artist}</p>
-              <p className="exhibit-gallery-slide-date">{item.date}</p>
-
-
-
-
+                <p className="exhibit-gallery-slide-link">
+                  <a href={`https://www.metmuseum.org/art/collection/search/${item.met_id}`} target="_blank" rel="noopener noreferrer">↗️</a>
+                </p>
+                <p className="exhibit-gallery-slide-title">{item.title}</p>
+                <p className="exhibit-gallery-slide-artist">{item.artist}</p>
+                <p className="exhibit-gallery-slide-date">{item.date}</p>
+                <p className="exhibit-gallery-slide-origin">{item.origin}</p>
               </div>
               <div className="exhibit-gallery-slide-content">
                 {(item.description === (null || "")) 
                 ? <div className="exhibit-gallery-slide-nodescription">
-                    <a href={item.image}><img className="nodescription-image" src={item.image} alt={item.title}/></a>
+                    <a href={item.image} target="_blank" rel="noopener noreferrer"><img className="nodescription-image" src={item.image} alt={item.title}/></a>
                   </div>
-                
                 : <>
                 <div className="exhibit-gallery-slide-withdescription">
                   <div className="slide-left">
-                    <a href={item.image}><img className="description-image" src={item.image} alt={item.title}/></a>
+                    <a href={item.image} target="_blank" rel="noopener noreferrer"><img className="description-image" src={item.image} alt={item.title}/></a>
                   </div>
                   <div className="slide-right">
                     <p className="description-p">{item.description}</p>
                   </div>
                 </div></>}
-
-
               </div>
             </div>)}
         </Carousel>
