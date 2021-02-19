@@ -47,8 +47,9 @@ function EditExhibit({exhibitionObjects, exhibitionData}) {
         method: "DELETE",
     })
     .then(() => {
-      dispatch(removeFromExhibitions(id))
       history.push("/")
+      dispatch(removeFromExhibitions(id))
+      
     })
   }
   

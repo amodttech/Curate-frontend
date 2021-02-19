@@ -28,7 +28,7 @@ function ExhibitGallery({exhibitionObjects}) {
 
               <div className="exhibit-gallery-slide-vitals">
                 <p className="exhibit-gallery-slide-link">
-                  <a href={`https://www.metmuseum.org/art/collection/search/${item.met_id}`} target="_blank" rel="noopener noreferrer">↗️</a>
+                  <a href={`https://www.metmuseum.org/art/collection/search/${item.met_id}`} target="_blank" rel="noopener noreferrer">🏛️</a>
                 </p>
                 <p className="exhibit-gallery-slide-title">{item.title}</p>
                 <p className="exhibit-gallery-slide-artist">{item.artist}</p>

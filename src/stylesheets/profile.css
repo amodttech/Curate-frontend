@@ -59,3 +59,13 @@ h3 {
 .profile-delete {
     color: red;
 }
+
+.profile-exhibit-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    justify-content: center;
+}

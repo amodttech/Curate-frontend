@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import { useHistory } from "react-router-dom";
 import '../../stylesheets/profile.css'
+import ExhibitCard from '../Exhibit/ExhibitCard'
 /// REDUX IMPORTS
 import {useDispatch, useSelector} from 'react-redux'
 import { setId, setDisplayName, setBio, addExhibitions, setUsername } from '../../reducers/userSlice'
@@ -16,7 +17,8 @@ function Profile() {
   const userExhibits = allExhibits.filter((exhibit) => exhibit.user_id === user.id)
   //// ------------
   // Exhibit List Map
-  const exhibitList = userExhibits.map(exhibit => <li id={exhibit.id}>{exhibit.name}</li>)
+  const exhibitList = userExhibits.map(exhibit => 
+    <ExhibitCard key={exhibit.id} exhibit={exhibit}/>)
 
   //// ------------
   // USESTATES
@@ -99,7 +101,7 @@ function Profile() {
           </div>
       </form>
       </> : null}
-      <ul>{exhibitList}</ul>
+      <ul className="profile-exhibit-list">{exhibitList}</ul>
     </div>
   );
 }

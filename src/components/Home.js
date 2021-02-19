@@ -36,7 +36,7 @@ function Home() {
 
   return (
     <div className="home-container">
-      <h3> {user.id ? `Welcome Home, ${user.display_name}` : "Let's look at some art!"}</h3>
+      <h3> {user.id ? `Welcome Home, ${user.username}` : "Let's look at some art!"}</h3>
       <p></p>
       {exhibitionsListFromStore ? 
       <ul className="home-exhibit-list">{exhibitionsComponents}</ul> : 
