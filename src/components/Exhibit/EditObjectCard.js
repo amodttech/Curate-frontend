@@ -81,13 +81,6 @@ function EditObjectCard({exhibit, exhibitId}) {
             </div>
         </form>
       </div>
-      {/* <div className="edit-object-card-bottom-panel" >
-        <a className="met-link" 
-            href={`https://www.metmuseum.org/art/collection/search/${met_id}`} 
-            target="_blank" 
-            rel="noreferrer">Click to see on https://www.metmuseum.org/</a>
-      </div> */}
-      
     </div>
   );
 }

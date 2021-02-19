@@ -12,19 +12,12 @@ function EditExhibit({exhibitionObjects, exhibitionData}) {
   // REDUX
   const dispatch = useDispatch()
   //// ------------
-  // USESTATES
-  // const {id, name, description} = exhibitionData
-
-  console.log('exhibitionData (in exhibit edit)', exhibitionData)
   const id = exhibitionData[0]
-  // const userId = exhibitionData[1]
   const name = exhibitionData[2]
   const description = exhibitionData[3]
-
-
+  // USESTATES
   const [formName, setFormName] = useState(name)
   const [showDescription, setShowDescription] = useState(description)
-  // const [displayTheme, setDisplayTheme] = useState(theme)
   //// ------------
   // EVENT HANDLERS
   function handleSubmit(event){
@@ -33,7 +26,6 @@ function EditExhibit({exhibitionObjects, exhibitionData}) {
       name: formName,
       description: showDescription,
       theme: null
-      // theme: displayTheme
     }
     fetch(`http://localhost:3000/exhibitions/${id}`, {
         method: "PATCH",
@@ -45,7 +37,6 @@ function EditExhibit({exhibitionObjects, exhibitionData}) {
     .then((r) => r.json())
     .then((data) => {
       dispatch(updateExhibitions(data))
-      // setExhibitionData(data)
       history.push(`/exhibitions/${id}`)
     })
   }
@@ -70,13 +61,6 @@ function EditExhibit({exhibitionObjects, exhibitionData}) {
         <form className="exhibit-edit-form" onSubmit={handleSubmit}>
           <input type="text" id="name" placeholder="Exhibition Name" value={formName} onChange={(e) => setFormName(e.target.value)} />
           <input type="text" id="description" placeholder="Write a Description" value={showDescription} onChange={(e) => setShowDescription(e.target.value)} />
-          {/* <select id="theme" value={displayTheme} onChange={(e) => setDisplayTheme(e.target.value)}>
-              <option value="" disabled selected>Select a Theme</option>
-              <option value="warm">Warm</option>
-              <option value="dark">Dark</option>
-              <option value="erratic">Erratic</option>
-              <option value="sensible">Sensible</option>
-          </select> */}
           <button type="submit">UPDATE</button>
           <button type="delete" className="exhibit-edit-delete" onClick={handleDelete}>DELETE EXHIBITION</button>
         </form>

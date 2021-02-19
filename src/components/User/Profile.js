@@ -12,7 +12,12 @@ function Profile() {
   // REDUX
   const dispatch = useDispatch()
   const user = useSelector((state) => state.user)
-  const loggedIn = useSelector((state) => state.loggedIn)
+  const allExhibits = Object.values(useSelector((state) => state.exhibitions))
+  const userExhibits = allExhibits.filter((exhibit) => exhibit.user_id === user.id)
+  //// ------------
+  // Exhibit List Map
+  const exhibitList = userExhibits.map(exhibit => <li id={exhibit.id}>{exhibit.name}</li>)
+
   //// ------------
   // USESTATES
   const [formUsername, setFormUsername] = useState(user.username)
@@ -94,7 +99,7 @@ function Profile() {
           </div>
       </form>
       </> : null}
-      
+      <ul>{exhibitList}</ul>
     </div>
   );
 }

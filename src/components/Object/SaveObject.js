@@ -11,9 +11,8 @@ function SaveObject({artObjectSaveData, currentExhibition}) {
   //// ------------
   // REDUX
   const dispatch = useDispatch()
-  // EVENT HANDLERS
 
-  
+  // EVENT HANDLERS
   async function handleSaveClick(){
     const newArtObject = await postNewArtObject(artObjectSaveData)
     const newExhibitionObject = await postNewExhibitionObject(newArtObject)
